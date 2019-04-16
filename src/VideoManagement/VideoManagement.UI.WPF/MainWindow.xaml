@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VideoManagement.UI.WPF"
         mc:Ignorable="d"
-        Title="Video Management" Height="450" Width="800">
-    <Grid>
-        
+        Title="Video Management" Height="700" Width="1000">
+    <Grid Height="669">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Margin="110.5,10,31.5,10" Orientation="Horizontal" Grid.Row="2" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Enter path here..." VerticalAlignment="Top" Width="385"/>
+            <Button x:Name="loadButton" Content="Load" HorizontalAlignment="Right" Height="20" VerticalAlignment="Center" Width="80"/>
+        </StackPanel>
+        <Menu Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="14,2.5,0,37.5" VerticalAlignment="Center" Width="615" Grid.RowSpan="2">
+            <MenuItem Header="File" Height="20" Width="75">
+                <MenuItem Header="Exit" Height="20" Margin="27,0,0,0" Width="75"/>
+            </MenuItem>
+            <MenuItem Header="Help" Height="20" Width="75">
+                <MenuItem Header="About Video Manager" HorizontalAlignment="Right" Height="20" Margin="27,0,0,0" Width="70"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
