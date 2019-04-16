@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VideoManagement.Business.Models;
+using VideoManagement.DataAccess;
+using VideoManagement.DataAccess.FileSystem;
+using VideoManagement.Models;
 
 namespace VideoManagement.Business
 {
-    public class SetupService
+    public class VideoMgmtService
     {
         public List<Video> Videos { get; set; }
 
-        public SetupService()
+        private IVideoMgmtRepository<Video> repository;
+
+        public VideoMgmtService(string path)
         {
+            repository = new FileRepository<Video>(path);
             Videos = GetAllVideo();
         }
 
@@ -27,6 +32,11 @@ namespace VideoManagement.Business
         public void AddCategory()
         {
 
+        }
+
+        public List<Video> Search(string query)
+        {
+            return null;
         }
     }
 }

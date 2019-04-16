@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace VideoManagement.Business.Models
+namespace VideoManagement.Models
 {
     public class Video
     {
