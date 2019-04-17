@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using VideoManagement.DataAccess;
 using VideoManagement.DataAccess.FileSystem;
@@ -9,14 +10,10 @@ namespace VideoManagement.Business
 {
     public class VideoMgmtService
     {
-        public List<Video> Videos { get; set; }
-
-        private IVideoMgmtRepository<Video> repository;
-
+        private IVideoMgmtRepository repository;
         public VideoMgmtService(string path, string fileExtension)
         {
-            repository = new FileRepository<Video>(path, fileExtension);
-            Videos = GetAllVideo();
+            repository = new FileRepository(path, fileExtension);
         }
 
         public List<Video> GetAllVideo()

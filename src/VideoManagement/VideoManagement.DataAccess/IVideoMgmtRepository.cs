@@ -1,17 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
+using VideoManagement.Models;
 
 namespace VideoManagement.DataAccess
 {
-    public interface IVideoMgmtRepository<T> where T : class
+    public interface IVideoMgmtRepository
     {
-        void Add(T[] videos);
+        bool DbExists();
 
-        void Add(T video);
+        void Add(List<Video> videos);
 
-        void Update(T video);
+        void Add(Video video);
 
-        void Delete(T video);
+        void Update(Video video);
+
+        void Delete(Video video);
+
+        Video Get(int id);
+
+        List<Video> Get(string query = null);
+
+        List<Video> Get(Func<Video, bool> predicate);
     }
 }
