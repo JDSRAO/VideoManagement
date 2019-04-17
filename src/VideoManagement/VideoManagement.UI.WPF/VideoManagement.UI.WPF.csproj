@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VideoManagement.Business\VideoManagement.Business.csproj">
+      <Project>{5a5a8ae2-f05d-4ec3-b0fa-f7b893fcd211}</Project>
+      <Name>VideoManagement.Business</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
