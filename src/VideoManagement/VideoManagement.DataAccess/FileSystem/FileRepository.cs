@@ -9,14 +9,17 @@ namespace VideoManagement.DataAccess.FileSystem
 {
     public class FileRepository<T> : IVideoMgmtRepository<T> where T : class
     {
-        private string DBFileName = "videoManagement.json";
+        private string DBFileName = "videoManagerData.json";
         private string PathWithFileName { get;}
         private string DirectoryPath { get;}
+        private string FilesToConsider { get; }
 
-        public FileRepository(string path)
+        public FileRepository(string path, string fileExtension)
         {
             DirectoryPath = path;
-            PathWithFileName = Path.Combine(path, DBFileName);
+            FilesToConsider = fileExtension;
+            var fileName = $"{FilesToConsider}_{DBFileName}";
+            PathWithFileName = Path.Combine(path, fileName);
             if(File.Exists(PathWithFileName))
             {
                 Refresh();
@@ -55,7 +58,7 @@ namespace VideoManagement.DataAccess.FileSystem
 
         public string[] GetAllLocalVideoFiles()
         {
-            string[] files = Directory.GetFiles(DirectoryPath, "*.*", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(DirectoryPath, $"*{FilesToConsider}*", SearchOption.AllDirectories);
             return files;
         }
 

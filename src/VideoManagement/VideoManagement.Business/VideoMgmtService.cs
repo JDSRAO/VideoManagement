@@ -13,9 +13,9 @@ namespace VideoManagement.Business
 
         private IVideoMgmtRepository<Video> repository;
 
-        public VideoMgmtService(string path)
+        public VideoMgmtService(string path, string fileExtension)
         {
-            repository = new FileRepository<Video>(path);
+            repository = new FileRepository<Video>(path, fileExtension);
             Videos = GetAllVideo();
         }
 

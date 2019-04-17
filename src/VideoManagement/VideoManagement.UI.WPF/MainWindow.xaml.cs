@@ -30,8 +30,9 @@ namespace VideoManagement.UI.WPF
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            var path = @"C:\KJDS\Training\searchEngine";
-            videoMgmtService = new VideoMgmtService(path);
+            var path = @"C:\Users\SrinivasRao\Music\Phone";
+            var extension = ".mp3";
+            videoMgmtService = new VideoMgmtService(path, extension);
             MessageBox.Show("load button clicked");
         }
     }
