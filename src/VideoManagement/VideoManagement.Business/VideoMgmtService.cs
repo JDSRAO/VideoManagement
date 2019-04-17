@@ -11,6 +11,7 @@ namespace VideoManagement.Business
     public class VideoMgmtService
     {
         private IVideoMgmtRepository repository;
+
         public VideoMgmtService(string path, string fileExtension)
         {
             repository = new FileRepository(path, fileExtension);
@@ -18,15 +19,15 @@ namespace VideoManagement.Business
 
         public List<Video> GetAllVideo()
         {
-            return null;
+            return repository.Get();
         }
 
-        public void AddTag()
+        public void AddTag(int id, string tag)
         {
 
         }
 
-        public void AddCategory()
+        public void AddCategory(int id, string category)
         {
 
         }

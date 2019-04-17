@@ -103,6 +103,10 @@
       <Project>{5a5a8ae2-f05d-4ec3-b0fa-f7b893fcd211}</Project>
       <Name>VideoManagement.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VideoManagement.Models\VideoManagement.Models.csproj">
+      <Project>{6729f285-f3ff-412b-bd6c-e8f4a2c83801}</Project>
+      <Name>VideoManagement.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />

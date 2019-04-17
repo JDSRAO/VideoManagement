@@ -27,6 +27,7 @@ namespace VideoManagement.DataAccess.FileSystem
             PathWithFileName = Path.Combine(path, fileName);
             Videos = new List<Video>();
             CreateDBIfNotExistsAndAddDefaultData();
+            Videos = GetScannedFiles();
         }
 
         public void Add(List<Video> video)
@@ -74,22 +75,19 @@ namespace VideoManagement.DataAccess.FileSystem
 
         public Video Get(int id)
         {
-            throw new NotImplementedException();
+            return Videos.Where(x => x.ID == id).FirstOrDefault();
         }
 
         public List<Video> Get(string query = null)
         {
-            var videos = new List<Video>();
             if(string.IsNullOrEmpty(query))
             {
-                videos = GetScannedFiles();
+                return Videos;
             }
             else
             {
-
+                return Videos.Where(x => x.Name.Contains(query) || x.Categories.Contains(query) || x.Tags.Contains(query)).ToList();
             }
-
-            return videos;
         }
 
         public List<Video> Get(Func<Video, bool> predicate)
@@ -131,6 +129,7 @@ namespace VideoManagement.DataAccess.FileSystem
             {
                 var files = GetAllLocalFiles();
                 int id = 1;
+                var videos = new List<Video>();
                 foreach (var file in files)
                 {
                     var video = new Video()
@@ -142,10 +141,10 @@ namespace VideoManagement.DataAccess.FileSystem
                     };
                     video.Categories.Add(video.GetDefaultCategory());
                     id++;
-                    Videos.Add(video);
+                    videos.Add(video);
                 }
                 File.WriteAllText(PathWithFileName, "");
-                Add(Videos);
+                Add(videos);
             }
         }
     }
