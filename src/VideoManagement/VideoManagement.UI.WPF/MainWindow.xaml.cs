@@ -34,7 +34,7 @@ namespace VideoManagement.UI.WPF
             var extension = ".mp3";
             videoMgmtService = new VideoMgmtService(path, extension);
             var videos = videoMgmtService.GetAllVideo();
-            MessageBox.Show("load button clicked");
+            //MessageBox.Show("load button clicked");
         }
     }
 }

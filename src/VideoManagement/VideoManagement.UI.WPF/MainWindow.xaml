@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VideoManagement.UI.WPF"
         mc:Ignorable="d"
-        Title="Video Manager" Height="700" Width="1000" Icon="icon.png">
+        Title="Video Manager" Height="700" Width="1000" Icon="icon.png" MinWidth="1000" MinHeight="600">
     <Grid Height="669">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -23,6 +23,8 @@
         </StackPanel>
         <Menu HorizontalAlignment="Left" Height="20" Margin="14,2.5,0,37.5" VerticalAlignment="Center" Grid.RowSpan="2" Width="150">
             <MenuItem Header="File" Height="20" Width="75">
+                <MenuItem Header="Open" Height="20" Margin="27,0,0,0" Width="75"/>
+                <Separator/>
                 <MenuItem Header="Exit" Height="20" Margin="27,0,0,0" Width="75"/>
             </MenuItem>
             <MenuItem Header="Help" Height="20" Width="75">
@@ -34,5 +36,6 @@
             <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="300" Margin="20,0,0,0"/>
             <Button x:Name="searchButton" Content="Search" Width="90" Click="LoadButton_Click" VerticalAlignment="Center" Margin="10,0.02,0,0.02" HorizontalAlignment="Right" ToolTip="Click here to load the files"/>
         </StackPanel>
+        <StatusBar HorizontalAlignment="Left" Height="20" Margin="0" Grid.Row="4" VerticalAlignment="Top"/>
     </Grid>
 </Window>
