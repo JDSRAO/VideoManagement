@@ -18,6 +18,12 @@ namespace VideoManagement.Models
 
         public DateTime CreatedOn => File.GetCreationTime(Path);
 
+        public DateTime? LastAccessTime { get; set; }
+
+        public long Views { get; set; }
+
+        public List<string> Artists { get; set; }
+
         public string GetDefaultCategory()
         {
             var parts = Path.Split('\\');
