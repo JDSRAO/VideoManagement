@@ -6,7 +6,7 @@ namespace VideoManagement.Models
 {
     public class Video
     {
-        public int ID { get; set; }
+        public Guid ID { get; set; }
 
         public string Name => System.IO.Path.GetFileName(Path);
 

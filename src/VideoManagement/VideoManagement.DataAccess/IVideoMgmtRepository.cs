@@ -18,7 +18,7 @@ namespace VideoManagement.DataAccess
 
         void Delete(Video video);
 
-        Video Get(int id);
+        Video Get(Guid id);
 
         List<Video> Get(string query = null);
 

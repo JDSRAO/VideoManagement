@@ -73,7 +73,7 @@ namespace VideoManagement.DataAccess.FileSystem
             return File.Exists(PathWithFileName);
         }
 
-        public Video Get(int id)
+        public Video Get(Guid id)
         {
             return Videos.Where(x => x.ID == id).FirstOrDefault();
         }
@@ -128,19 +128,17 @@ namespace VideoManagement.DataAccess.FileSystem
             if (!DbExists())
             {
                 var files = GetAllLocalFiles();
-                int id = 1;
                 var videos = new List<Video>();
                 foreach (var file in files)
                 {
                     var video = new Video()
                     {
-                        ID = id,
+                        ID = Guid.NewGuid(),
                         Path = file,
                         Categories = new List<string>(),
                         Tags = new List<string>()
                     };
                     video.Categories.Add(video.GetDefaultCategory());
-                    id++;
                     videos.Add(video);
                 }
                 File.WriteAllText(PathWithFileName, "");
