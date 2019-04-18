@@ -12,11 +12,11 @@ namespace VideoManagement.DataAccess
 
         void Add(List<Video> videos);
 
-        void Add(Video video);
+        Guid Add(Video video);
 
         void Update(Video video);
 
-        void Delete(Video video);
+        void Delete(Guid id);
 
         Video Get(Guid id);
 

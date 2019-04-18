@@ -36,10 +36,12 @@ namespace VideoManagement.DataAccess.FileSystem
             SaveToFile();
         }
 
-        public void Add(Video video)
+        public Guid Add(Video video)
         {
+            video.ID = Guid.NewGuid();
             Videos.Add(video);
             SaveToFile();
+            return video.ID;
         }
 
         public void Update(Video video)
@@ -62,8 +64,9 @@ namespace VideoManagement.DataAccess.FileSystem
             SaveToFile();
         }
 
-        public void Delete(Video video)
+        public void Delete(Guid id)
         {
+            var video = Videos.Where(x => x.ID == id).FirstOrDefault();
             Videos.Remove(video);
             SaveToFile();
         }

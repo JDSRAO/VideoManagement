@@ -22,14 +22,19 @@ namespace VideoManagement.Business
             return repository.Get();
         }
 
-        public void AddTag(int id, string tag)
+        public Guid Add(Video video)
         {
-
+            return repository.Add(video);
         }
 
-        public void AddCategory(int id, string category)
+        public void Update(Video video)
         {
+            repository.Update(video);
+        }
 
+        public void Delete(Guid id)
+        {
+            repository.Delete(id);
         }
 
         public List<Video> Search(string query)
