@@ -24,6 +24,8 @@ namespace VideoManagement.Models
 
         public List<string> Artists { get; set; }
 
+        public bool Favourite { get; set; }
+
         public string GetDefaultCategory()
         {
             var parts = Path.Split('\\');
