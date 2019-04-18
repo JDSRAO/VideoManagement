@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace VideoManagement.Models
 {
@@ -14,6 +15,8 @@ namespace VideoManagement.Models
         public List<string> Categories { get; set; }
 
         public List<string> Tags { get; set; }
+
+        public DateTime CreatedOn => File.GetCreationTime(Path);
 
         public string GetDefaultCategory()
         {
