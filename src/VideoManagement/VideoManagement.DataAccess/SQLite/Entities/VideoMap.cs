@@ -1,0 +1,29 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using VideoManagement.Models;
+
+namespace VideoManagement.DataAccess.SQLite.Entities
+{
+    public class VideoMap : IEntityTypeConfiguration<Video>
+    {
+        public void Configure(EntityTypeBuilder<Video> builder)
+        {
+            builder.HasKey(x => x.ID);
+
+            builder.Property(x => x.Name);
+            builder.Property(x => x.Path);
+            builder.Property(x => x.Categories);
+            builder.Property(x => x.Tags);
+            builder.Property(x => x.CreatedOn);
+            builder.Property(x => x.LastAccessTime);
+            builder.Property(x => x.Views);
+            builder.Property(x => x.Artists);
+            builder.Property(x => x.Favourite);
+
+            builder.ToTable("Videos");
+        }
+    }
+}

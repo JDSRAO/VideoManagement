@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VideoManagement.Business;
 
 namespace VideoManagement.UI.WPF
 {
@@ -20,9 +21,21 @@ namespace VideoManagement.UI.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private VideoMgmtService videoMgmtService;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            var path = @"C:\Users\SrinivasRao\Music\Phone";
+            var extension = ".mp3";
+            videoMgmtService = new VideoMgmtService(path, extension);
+            var videos = videoMgmtService.Get();
+            Items.ItemsSource = videos;
+            //MessageBox.Show("load button clicked");
         }
     }
 }
