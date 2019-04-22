@@ -35,7 +35,13 @@ namespace VideoManagement.UI.WPF
             videoMgmtService = new VideoMgmtService(path, extension);
             var videos = videoMgmtService.Get();
             Items.ItemsSource = videos;
-            //MessageBox.Show("load button clicked");
+            Window playPage = new Window();
+            playPage.Content = new MediaElement()
+            {
+                Source = new Uri(videos[0].Path, UriKind.Absolute)
+            };
+
+            playPage.Show();
         }
     }
 }
