@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VideoManagement.Business;
 using VideoManagement.Models;
+using Forms = System.Windows.Forms;
 
 namespace VideoManagement.UI.WPF
 {
@@ -23,18 +24,26 @@ namespace VideoManagement.UI.WPF
     public partial class MainWindow : Window
     {
         private VideoMgmtService videoMgmtService;
-        string path = @"C:\Users\SrinivasRao\Music\Phone";
-        string extension = ".mp3";
+        string path = string.Empty; 
+        string extension = ".mp4";
 
         public MainWindow()
         {
             InitializeComponent();
-            Application.Current.Properties.Add(AppProperties.Path, path);
-            Application.Current.Properties.Add(AppProperties.Extension, extension);
+            
         }
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
+            using (var dialog = new Forms.FolderBrowserDialog())
+            {
+                Forms.DialogResult result = dialog.ShowDialog();
+                path = dialog.SelectedPath;
+            }
+            Application.Current.Properties.Remove(AppProperties.Path);
+            Application.Current.Properties.Remove(AppProperties.Extension);
+            Application.Current.Properties.Add(AppProperties.Path, path);
+            Application.Current.Properties.Add(AppProperties.Extension, extension);
             videoMgmtService = new VideoMgmtService(path, extension);
             var videos = videoMgmtService.Get();
             Items.ItemsSource = videos;
