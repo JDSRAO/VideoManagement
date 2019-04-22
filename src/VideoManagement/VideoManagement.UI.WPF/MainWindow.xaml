@@ -35,8 +35,9 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Width="Auto">
-                        <Image Source="C:\Users\SrinivasRao\Pictures\Saved Pictures\thumb-1920-637345.jpg" MaxWidth="30" MaxHeight="30"/>
-                        <ToggleButton ></ToggleButton>
+                        <ToggleButton MinWidth="100" MinHeight="100" MaxHeight="100" MaxWidth="100" >
+                            <ContentControl Content="{DynamicResource Favourite}"  />
+                        </ToggleButton>
                         <Label Content="{Binding Name}"></Label>
                         <Label Content="{Binding Views}"></Label>
                     </StackPanel>
