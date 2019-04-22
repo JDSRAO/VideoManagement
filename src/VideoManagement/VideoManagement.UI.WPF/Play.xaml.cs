@@ -28,6 +28,9 @@ namespace VideoManagement.UI.WPF
         {
             InitializeComponent();
             videoMgmtService = new VideoMgmtService(App.Path, App.Exntension);
+            video.Views = ++video.Views;
+            video.LastAccessTime = DateTime.Now;
+            videoMgmtService.Update(video);
             Title = video.Name;
             player.Source = new Uri(video.Path, uriKind: UriKind.Absolute);
             player.Play();
