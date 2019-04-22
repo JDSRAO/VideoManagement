@@ -44,13 +44,8 @@ namespace VideoManagement.UI.WPF
             if(addedItems.Count > 0)
             {
                 var selectedItem = (Video)addedItems[0];
-                Window playPage = new Window();
-                playPage.Content = new MediaElement()
-                {
-                    Source = new Uri(selectedItem.Path, UriKind.Absolute)
-                };
-
-                playPage.Show();
+                Play play = new Play(selectedItem);
+                play.Show();
             }
         }
     }
