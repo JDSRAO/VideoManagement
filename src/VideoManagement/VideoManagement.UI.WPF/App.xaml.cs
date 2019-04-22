@@ -13,5 +13,7 @@ namespace VideoManagement.UI.WPF
     /// </summary>
     public partial class App : Application
     {
+        public static string Path => (string) Current.Properties[AppProperties.Path];
+        public static string Exntension => (string) Current.Properties[AppProperties.Extension];
     }
 }

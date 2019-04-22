@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using VideoManagement.Business;
 using VideoManagement.Models;
 
 namespace VideoManagement.UI.WPF
@@ -21,9 +22,12 @@ namespace VideoManagement.UI.WPF
     /// </summary>
     public partial class Play : Window
     {
+        private VideoMgmtService videoMgmtService { get; }
+
         public Play(Video video)
         {
             InitializeComponent();
+            videoMgmtService = new VideoMgmtService(App.Path, App.Exntension);
             Title = video.Name;
             player.Source = new Uri(video.Path, uriKind: UriKind.Absolute);
             player.Play();
