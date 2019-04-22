@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VideoManagement.Business;
+using VideoManagement.Models;
 
 namespace VideoManagement.UI.WPF
 {
@@ -35,13 +36,22 @@ namespace VideoManagement.UI.WPF
             videoMgmtService = new VideoMgmtService(path, extension);
             var videos = videoMgmtService.Get();
             Items.ItemsSource = videos;
-            Window playPage = new Window();
-            playPage.Content = new MediaElement()
-            {
-                Source = new Uri(videos[0].Path, UriKind.Absolute)
-            };
+        }
 
-            playPage.Show();
+        private void Items_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var addedItems = e.AddedItems;
+            if(addedItems.Count > 0)
+            {
+                var selectedItem = (Video)addedItems[0];
+                Window playPage = new Window();
+                playPage.Content = new MediaElement()
+                {
+                    Source = new Uri(selectedItem.Path, UriKind.Absolute)
+                };
+
+                playPage.Show();
+            }
         }
     }
 }

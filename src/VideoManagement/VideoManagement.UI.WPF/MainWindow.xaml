@@ -31,7 +31,7 @@
                 <MenuItem Header="About Video Manager" HorizontalAlignment="Right" Height="20" Margin="27,0,0,0" Width="70"/>
             </MenuItem>
         </Menu>
-        <ListBox x:Name="Items" HorizontalAlignment="Center" Margin="10" Grid.Row="3" VerticalAlignment="Center" Grid.Column="1">
+        <ListBox x:Name="Items" HorizontalAlignment="Center" Margin="10" Grid.Row="3" VerticalAlignment="Center" Grid.Column="1" SelectionChanged="Items_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Width="Auto">
