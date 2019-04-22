@@ -23,16 +23,18 @@ namespace VideoManagement.UI.WPF
     public partial class MainWindow : Window
     {
         private VideoMgmtService videoMgmtService;
+        string path = @"C:\Users\SrinivasRao\Music\Phone";
+        string extension = ".mp3";
 
         public MainWindow()
         {
             InitializeComponent();
+            Application.Current.Properties.Add(AppProperties.Path, path);
+            Application.Current.Properties.Add(AppProperties.Extension, extension);
         }
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            var path = @"C:\Users\SrinivasRao\Music\Phone";
-            var extension = ".mp3";
             videoMgmtService = new VideoMgmtService(path, extension);
             var videos = videoMgmtService.Get();
             Items.ItemsSource = videos;
@@ -47,6 +49,15 @@ namespace VideoManagement.UI.WPF
                 Play play = new Play(selectedItem);
                 play.Show();
             }
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            var query = searchText.Text;
+            videoMgmtService = new VideoMgmtService(path, extension);
+            var videos = videoMgmtService.Get(query);
+            Items.ItemsSource = null;
+            Items.ItemsSource = videos;
         }
     }
 }

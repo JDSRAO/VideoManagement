@@ -22,10 +22,11 @@ namespace VideoManagement.Business
             }
             else
             {
-                return context.Videos.Where(x => x.Name.Contains(query)
-                || x.Tags.Count(a => a.Name.Contains(query)) > 1
-                || x.Categories.Count(a => a.Name.Contains(query)) > 1
-                || x.Artists.Count(a => a.Name.Contains(query)) > 1)
+                query = query.ToLower();
+                return context.Videos.Where(x => x.Name.ToLower().Contains(query)
+                || x.Tags.Count(a => a.Name.ToLower().Contains(query)) > 1
+                || x.Categories.Count(a => a.Name.ToLower().Contains(query)) > 1
+                || x.Artists.Count(a => a.Name.ToLower().Contains(query)) > 1)
                 .ToList();
             }
         }
