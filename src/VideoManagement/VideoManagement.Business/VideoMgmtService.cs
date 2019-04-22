@@ -1,90 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
-using VideoManagement.DataAccess;
-using VideoManagement.DataAccess.FileSystem;
 using VideoManagement.DataAccess.SQLite;
 using VideoManagement.Models;
 
 namespace VideoManagement.Business
 {
-    public class VideoMgmtService
+    public class VideoMgmtService : BaseManager
     {
-        private IVideoMgmtRepository repository;
-        private string DirectoryPath { get; }
-        private string FilesToConsider { get; }
-
-        public VideoMgmtService(string path, string fileExtension)
+        public VideoMgmtService(string path, string fileExtension) : base(path, fileExtension)
         {
-            FilesToConsider = fileExtension;
-            DirectoryPath = path;
-            repository = new FileManagerRepository(path, fileExtension);
         }
 
-        public List<Video> GetAllVideo()
+        public List<Video> Get(string query = null)
         {
-            return repository.Get();
+            if (string.IsNullOrEmpty(query))
+            {
+                return context.Videos.ToList();
+            }
+            else
+            {
+                return context.Videos.Where(x => x.Name.Contains(query)
+                || x.Tags.Count(a => a.Name.Contains(query)) > 1
+                || x.Categories.Count(a => a.Name.Contains(query)) > 1
+                || x.Artists.Count(a => a.Name.Contains(query)) > 1)
+                .ToList();
+            }
+        }
+
+        public List<Video> Get(Func<Video, bool> predicate)
+        {
+            return context.Videos.Where(predicate).ToList();
         }
 
         public Guid Add(Video video)
         {
-            return repository.Add(video);
+            var newVideo = context.Videos.Add(video);
+            context.SaveChanges();
+            return newVideo.Entity.ID;
         }
 
         public void Update(Video video)
         {
-            repository.Update(video);
+            //var videoToUpdate = context.Videos.Where(x => x.ID == video.ID).FirstOrDefault();
+            //var flags = BindingFlags.Public | BindingFlags.Instance;
+            //var videoProperties = video.GetType().GetProperties(flags);
+            //var videoToUpdateProperties = videoToUpdate.GetType().GetProperties(flags);
+            //foreach (var property in videoProperties)
+            //{
+            //    if (property.GetValue(video) != null && property.CanWrite)
+            //    {
+            //        var dataProperty = videoToUpdateProperties.FirstOrDefault(x => x.Name.Equals(property.Name));
+            //        dataProperty.SetValue(videoToUpdate, property.GetValue(video));
+            //    }
+            //}
+
+            context.Videos.Update(video);
+            context.SaveChanges();
         }
 
         public void Delete(Guid id)
         {
-            repository.Delete(id);
-        }
-
-        public bool Setup()
-        {
-            try
-            {
-                var files = GetAllLocalFiles();
-                var videos = new List<Video>();
-                foreach (var file in files)
-                {
-                    var video = new Video()
-                    {
-                        ID = Guid.NewGuid(),
-                        Path = file
-                    };
-                    var category = new Category()
-                    {
-                        ID = Guid.NewGuid(),
-                        Name = video.GetDefaultCategory()
-                    };
-                    video.Categories.Add(category);
-                    videos.Add(video);
-                }
-
-                repository.Add(videos);
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            
+            var video = context.Videos.Where(x => x.ID == id).FirstOrDefault();
+            context.Videos.Remove(video);
+            context.SaveChanges();
         }
 
         public List<Video> Search(string query)
         {
             return null;
         }
-
-        public string[] GetAllLocalFiles()
-        {
-            string[] files = Directory.GetFiles(DirectoryPath, $"*{FilesToConsider}*", SearchOption.AllDirectories);
-            return files;
-        }
-
     }
 }

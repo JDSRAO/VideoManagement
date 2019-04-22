@@ -33,7 +33,7 @@ namespace VideoManagement.UI.WPF
             var path = @"C:\Users\SrinivasRao\Music\Phone";
             var extension = ".mp3";
             videoMgmtService = new VideoMgmtService(path, extension);
-            var videos = videoMgmtService.GetAllVideo();
+            var videos = videoMgmtService.Get();
             Items.ItemsSource = videos;
             //MessageBox.Show("load button clicked");
         }

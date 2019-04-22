@@ -29,5 +29,12 @@ namespace VideoManagement.Models
             var parts = Path.Split('\\');
             return parts[parts.Length - 2];
         }
+
+        public Video()
+        {
+            Categories = new List<Category>();
+            Tags = new List<Tag>();
+            Artists = new List<Artist>();
+        }
     }
 }
