@@ -4,17 +4,15 @@ using System.IO;
 
 namespace VideoManagement.Models
 {
-    public class Video
+    public class Video : BaseModel
     {
-        public Guid ID { get; set; }
-
         public string Name => System.IO.Path.GetFileName(Path);
 
         public string Path { get; set; }
 
-        public List<string> Categories { get; set; }
+        public List<Category> Categories { get; set; }
 
-        public List<string> Tags { get; set; }
+        public List<Tag> Tags { get; set; }
 
         public DateTime CreatedOn => File.GetCreationTime(Path);
 
@@ -22,7 +20,7 @@ namespace VideoManagement.Models
 
         public long Views { get; set; }
 
-        public List<string> Artists { get; set; }
+        public List<Artist> Artists { get; set; }
 
         public bool Favourite { get; set; }
 

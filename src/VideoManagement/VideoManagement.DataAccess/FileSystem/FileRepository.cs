@@ -89,7 +89,7 @@ namespace VideoManagement.DataAccess.FileSystem
             }
             else
             {
-                return Videos.Where(x => x.Name.Contains(query) || x.Categories.Contains(query) || x.Tags.Contains(query)).ToList();
+                return Videos.Where(x => x.Name.Contains(query) || x.Categories.Count( a => a.Name.Contains(query)) > 1 || x.Tags.Count(a => a.Name.Contains(query)) > 1).ToList();
             }
         }
 
@@ -130,22 +130,22 @@ namespace VideoManagement.DataAccess.FileSystem
         {
             if (!DbExists())
             {
-                var files = GetAllLocalFiles();
-                var videos = new List<Video>();
-                foreach (var file in files)
-                {
-                    var video = new Video()
-                    {
-                        ID = Guid.NewGuid(),
-                        Path = file,
-                        Categories = new List<string>(),
-                        Tags = new List<string>()
-                    };
-                    video.Categories.Add(video.GetDefaultCategory());
-                    videos.Add(video);
-                }
+                //var files = GetAllLocalFiles();
+                //var videos = new List<Video>();
+                //foreach (var file in files)
+                //{
+                //    var video = new Video()
+                //    {
+                //        ID = Guid.NewGuid(),
+                //        Path = file,
+                //        Categories = new List<string>(),
+                //        Tags = new List<string>()
+                //    };
+                //    video.Categories.Add(video.GetDefaultCategory());
+                //    videos.Add(video);
+                //}
                 File.WriteAllText(PathWithFileName, "");
-                Add(videos);
+                //Add(videos);
             }
         }
     }
