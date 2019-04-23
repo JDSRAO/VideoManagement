@@ -18,7 +18,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Margin="30,10.03,0,9.97" Orientation="Horizontal" Grid.Row="1" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Width="440">
-            <TextBox x:Name="CWD" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Enter path here..." VerticalAlignment="Center" Width="300" Margin="20,0,0,0"/>
+            <TextBox x:Name="CWD" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Enter path here..." VerticalAlignment="Center" Width="300" Margin="20,0,0,0" IsEnabled="False"/>
             <Button x:Name="loadButton" Content="Browse" Width="90" Click="LoadButton_Click" VerticalAlignment="Center" Margin="10,0.02,0,0.02" HorizontalAlignment="Right" ToolTip="Click here to load the files"/>
         </StackPanel>
         <Menu HorizontalAlignment="Left" Height="20" Margin="14,2.5,0,37.5" VerticalAlignment="Center" Grid.RowSpan="2" Width="150">

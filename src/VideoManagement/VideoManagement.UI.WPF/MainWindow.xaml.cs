@@ -40,6 +40,7 @@ namespace VideoManagement.UI.WPF
                 Forms.DialogResult result = dialog.ShowDialog();
                 path = dialog.SelectedPath;
             }
+            CWD.Text = path;
             Application.Current.Properties.Remove(AppProperties.Path);
             Application.Current.Properties.Remove(AppProperties.Extension);
             Application.Current.Properties.Add(AppProperties.Path, path);
