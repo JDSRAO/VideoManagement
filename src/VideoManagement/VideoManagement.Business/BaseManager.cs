@@ -18,7 +18,7 @@ namespace VideoManagement.Business
 
         public BaseManager(string path, string fileExtension)
         {
-            var fileName = $"{fileExtension}_{DBFileName}";
+            var fileName = $"{DBFileName}";
             FilesToConsider = fileExtension;
             DirectoryPath = path;
             var pathWithFileName = Path.Combine(path, fileName);

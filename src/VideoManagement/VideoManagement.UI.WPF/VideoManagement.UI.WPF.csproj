@@ -146,6 +146,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -164,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Images\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -176,8 +181,16 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Play.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Play.xaml.cs">
+      <DependentUpon>Play.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -219,7 +232,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Resource Include="Images\icons8-audio-32.png" />
+    <Resource Include="Images\icons8-mute-32.png" />
+    <Resource Include="Images\icons8-opened-folder-32.png" />
+    <Resource Include="Images\icons8-pause-32.png" />
+    <Resource Include="Images\icons8-play-32.png" />
+    <Resource Include="Images\icons8-search-32.png" />
+    <Resource Include="Images\icons8-search-folder-32.png" />
+    <Resource Include="Images\icons8-stop-32.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icon.png" />
