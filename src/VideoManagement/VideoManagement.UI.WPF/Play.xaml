@@ -5,28 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VideoManagement.UI.WPF"
         mc:Ignorable="d"
-        Title="Play" Height="450" Width="800" Icon="icon.png">
+        Title="Play" Height="450" Width="800" Icon="icon.png" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Margin="7.5,10" Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="777" Height="359">
-            <MediaElement  Name="player" HorizontalAlignment="Center" Height="345" VerticalAlignment="Center" Width="745" Margin="16,0" Stretch="Fill" LoadedBehavior="Manual" />
-        </StackPanel>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label Name="lblStatus" Content="Not playing..." HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="5,0" />
-            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button Name="btnPlay" Click="btnPlay_Click">Play</Button>
-                <Button Name="btnPause" Margin="5,0" Click="btnPause_Click">Pause</Button>
-                <Button Name="btnStop" Click="btnStop_Click">Stop</Button>
-            </WrapPanel>
-        </StackPanel>
+        <Grid Grid.Row="1">
+            <StackPanel Margin="7.5,10" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="777" Height="359">
+                <MediaElement  Name="player" ScrubbingEnabled="True" MediaOpened="player_MediaOpened" HorizontalAlignment="Center" Height="345" VerticalAlignment="Center" Width="745" Margin="16,0" Stretch="Fill" LoadedBehavior="Manual" MediaEnded="Player_MediaEnded" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Slider Name="sbarPosition" HorizontalAlignment="Center" Height="20" Margin="25,5,27,5" VerticalAlignment="Center" Width="740" ValueChanged="SbarPosition_ValueChanged"/>
+        </Grid>
+        <Grid Grid.Row="3">
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Label Name="lblStatus" Content="Not playing..." HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="5,0" />
+                <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button Name="btnPlay" Click="btnPlay_Click">Play</Button>
+                    <Button Name="btnPause" Margin="5,0" Click="btnPause_Click">Pause</Button>
+                    <Button Name="btnStop" Click="btnStop_Click">Stop</Button>
+                </WrapPanel>
+            </StackPanel>
+            <Slider Name="volumePosition" HorizontalAlignment="Left" Height="20" Margin="565,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="195" ValueChanged="VolumePosition_ValueChanged" Maximum="100"/>
+        </Grid>
+
+
     </Grid>
 
 </Window>
