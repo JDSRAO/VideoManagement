@@ -102,6 +102,8 @@ namespace VideoManagement.UI.WPF
         {
             if (is_playing)
             {
+                btnPlay.Visibility = Visibility.Collapsed;
+                btnPause.Visibility = Visibility.Visible;
                 btnPlay.IsEnabled = false;
                 btnPause.IsEnabled = true;
                 btnPlay.Opacity = 0.5;
@@ -111,6 +113,8 @@ namespace VideoManagement.UI.WPF
             {
                 btnPlay.IsEnabled = true;
                 btnPause.IsEnabled = false;
+                btnPlay.Visibility = Visibility.Visible;
+                btnPause.Visibility = Visibility.Collapsed;
                 btnPlay.Opacity = 1.0;
                 btnPause.Opacity = 0.5;
             }
