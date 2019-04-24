@@ -57,8 +57,15 @@ namespace VideoManagement.UI.WPF
             {
                 var selectedItem = (Video)addedItems[0];
                 Play play = new Play(selectedItem);
+                play.Loaded += Play_Loaded;
                 play.Show();
             }
+        }
+
+        private void Play_Loaded(object sender, RoutedEventArgs e)
+        {
+            var videos = videoMgmtService.Get();
+            Items.ItemsSource = videos;
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
