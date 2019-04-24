@@ -11,21 +11,12 @@ namespace VideoManagement.Business
     {
         private ApplicationDBContext dBContext = new ApplicationDBContext();
 
-        public Guid? GetConnectionStringFor(string path)
-        {
-            var item = dBContext.RecentPaths.Where(x => x.Path.Equals(path)).FirstOrDefault();
-            if(item != null)
-            {
-                return item.ID;
-            }
-            return null;
-        }
-
         public Guid AddPath(string path, string extension)
         {
             var recentPath = new RecentPath()
             {
-                Path = path
+                Path = path,
+                Extension = extension
             };
             var item = dBContext.RecentPaths.Add(recentPath);
             dBContext.SaveChanges();
@@ -34,7 +25,7 @@ namespace VideoManagement.Business
 
         public Guid CreatePathIfNotExists(string path, string extension)
         {
-            var item = dBContext.RecentPaths.Where(x => x.Path.Equals(path)).FirstOrDefault();
+            var item = dBContext.RecentPaths.Where(x => x.Path.Equals(path) && x.Extension.Equals(extension)).FirstOrDefault();
             if (item == null)
             {
                 return AddPath(path, extension);
