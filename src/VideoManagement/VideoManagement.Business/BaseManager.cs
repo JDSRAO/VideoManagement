@@ -13,16 +13,19 @@ namespace VideoManagement.Business
         private string DirectoryPath { get; }
         private string FilesToConsider { get; }
         public FileManagerDbContext context { get; }
+        private AppMgmtService appMgmtService { get; }
 
         private string DBFileName = "searchEngine.db";
 
         public BaseManager(string path, string fileExtension)
         {
-            var fileName = $"{DBFileName}";
             FilesToConsider = fileExtension;
             DirectoryPath = path;
-            var pathWithFileName = Path.Combine(path, fileName);
-            context = new FileManagerDbContext(pathWithFileName);
+            appMgmtService = new AppMgmtService();
+            Guid pathId = appMgmtService.CreatePathIfNotExists(path, fileExtension);
+            var fileName = $"{pathId}_{DBFileName}";
+            var connectionString = Path.Combine(Directory.GetCurrentDirectory(), "db", fileName);
+            context = new FileManagerDbContext(connectionString);
             if (!DbExists())
             {
                 Setup();
@@ -53,12 +56,10 @@ namespace VideoManagement.Business
             {
                 var video = new Video()
                 {
-                    ID = Guid.NewGuid(),
                     Path = file
                 };
                 var category = new Category()
                 {
-                    ID = Guid.NewGuid(),
                     Name = video.GetDefaultCategory()
                 };
                 video.Categories.Add(category);

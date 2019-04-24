@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using VideoManagement.Business;
 
 namespace VideoManagement.UI.WPF
 {
@@ -15,5 +17,11 @@ namespace VideoManagement.UI.WPF
     {
         public static string Path => (string) Current.Properties[AppProperties.Path];
         public static string Exntension => (string) Current.Properties[AppProperties.Extension];
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            AppMgmtService appMgmtService = new AppMgmtService();
+        }
     }
 }
