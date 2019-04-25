@@ -22,7 +22,7 @@ namespace VideoManagement.Business
             FilesToConsider = fileExtension;
             DirectoryPath = path;
             appMgmtService = new AppMgmtService();
-            Guid pathId = appMgmtService.CreatePathIfNotExists(path, fileExtension);
+            Guid pathId = appMgmtService.ConfigurePreConditionsForPath(path, fileExtension);
             var fileName = $"{pathId}_{DBFileName}";
             var connectionString = Path.Combine(Directory.GetCurrentDirectory(), "db", fileName);
             context = new FileManagerDbContext(connectionString);

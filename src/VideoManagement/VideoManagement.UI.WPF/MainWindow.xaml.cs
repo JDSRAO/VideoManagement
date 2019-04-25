@@ -38,16 +38,18 @@ namespace VideoManagement.UI.WPF
             using (var dialog = new Forms.FolderBrowserDialog())
             {
                 Forms.DialogResult result = dialog.ShowDialog();
-                path = dialog.SelectedPath;
+                if(!string.IsNullOrEmpty(dialog.SelectedPath))
+                {
+                    path = dialog.SelectedPath;
+                    CWD.Text = path;
+                    Application.Current.Properties.Remove(AppProperties.Path);
+                    Application.Current.Properties.Remove(AppProperties.Extension);
+                    Application.Current.Properties.Add(AppProperties.Path, path);
+                    Application.Current.Properties.Add(AppProperties.Extension, extension);
+                    videoMgmtService = new VideoMgmtService(path, extension);
+                    RefreshPlaylist();
+                }
             }
-            CWD.Text = path;
-            Application.Current.Properties.Remove(AppProperties.Path);
-            Application.Current.Properties.Remove(AppProperties.Extension);
-            Application.Current.Properties.Add(AppProperties.Path, path);
-            Application.Current.Properties.Add(AppProperties.Extension, extension);
-            videoMgmtService = new VideoMgmtService(path, extension);
-            var videos = videoMgmtService.Get();
-            Items.ItemsSource = videos;
         }
 
         private void Items_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -64,17 +66,20 @@ namespace VideoManagement.UI.WPF
 
         private void Play_Loaded(object sender, RoutedEventArgs e)
         {
-            var videos = videoMgmtService.Get();
-            Items.ItemsSource = videos;
+            RefreshPlaylist();
+        }
+
+        private void RefreshPlaylist(string query = null)
+        {
+            var videos = videoMgmtService.Get(query);
+            Items.ItemsSource = videos.OrderBy(x => x.Name);
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             var query = searchText.Text;
             videoMgmtService = new VideoMgmtService(path, extension);
-            var videos = videoMgmtService.Get(query);
-            Items.ItemsSource = null;
-            Items.ItemsSource = videos;
+            RefreshPlaylist(query);
         }
     }
 }

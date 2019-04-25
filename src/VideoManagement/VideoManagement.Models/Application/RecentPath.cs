@@ -9,5 +9,6 @@ namespace VideoManagement.Models.Application
         public Guid ID { get; set; }
         public string Path { get; set; }
         public string Extension { get; set; }
+        public DateTime AccessedOn { get; set; }
     }
 }
