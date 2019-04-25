@@ -38,16 +38,19 @@ namespace VideoManagement.UI.WPF
             using (var dialog = new Forms.FolderBrowserDialog())
             {
                 Forms.DialogResult result = dialog.ShowDialog();
-                path = dialog.SelectedPath;
+                if(!string.IsNullOrEmpty(dialog.SelectedPath))
+                {
+                    path = dialog.SelectedPath;
+                    CWD.Text = path;
+                    Application.Current.Properties.Remove(AppProperties.Path);
+                    Application.Current.Properties.Remove(AppProperties.Extension);
+                    Application.Current.Properties.Add(AppProperties.Path, path);
+                    Application.Current.Properties.Add(AppProperties.Extension, extension);
+                    videoMgmtService = new VideoMgmtService(path, extension);
+                    var videos = videoMgmtService.Get();
+                    Items.ItemsSource = videos;
+                }
             }
-            CWD.Text = path;
-            Application.Current.Properties.Remove(AppProperties.Path);
-            Application.Current.Properties.Remove(AppProperties.Extension);
-            Application.Current.Properties.Add(AppProperties.Path, path);
-            Application.Current.Properties.Add(AppProperties.Extension, extension);
-            videoMgmtService = new VideoMgmtService(path, extension);
-            var videos = videoMgmtService.Get();
-            Items.ItemsSource = videos;
         }
 
         private void Items_SelectionChanged(object sender, SelectionChangedEventArgs e)
