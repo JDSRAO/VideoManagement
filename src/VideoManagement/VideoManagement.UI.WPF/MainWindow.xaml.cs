@@ -47,8 +47,7 @@ namespace VideoManagement.UI.WPF
                     Application.Current.Properties.Add(AppProperties.Path, path);
                     Application.Current.Properties.Add(AppProperties.Extension, extension);
                     videoMgmtService = new VideoMgmtService(path, extension);
-                    var videos = videoMgmtService.Get();
-                    Items.ItemsSource = videos;
+                    RefreshPlaylist();
                 }
             }
         }
@@ -67,17 +66,20 @@ namespace VideoManagement.UI.WPF
 
         private void Play_Loaded(object sender, RoutedEventArgs e)
         {
-            var videos = videoMgmtService.Get();
-            Items.ItemsSource = videos;
+            RefreshPlaylist();
+        }
+
+        private void RefreshPlaylist(string query = null)
+        {
+            var videos = videoMgmtService.Get(query);
+            Items.ItemsSource = videos.OrderBy(x => x.Name);
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             var query = searchText.Text;
             videoMgmtService = new VideoMgmtService(path, extension);
-            var videos = videoMgmtService.Get(query);
-            Items.ItemsSource = null;
-            Items.ItemsSource = videos;
+            RefreshPlaylist(query);
         }
     }
 }
