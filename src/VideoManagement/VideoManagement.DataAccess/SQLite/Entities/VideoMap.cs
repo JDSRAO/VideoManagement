@@ -23,6 +23,11 @@ namespace VideoManagement.DataAccess.SQLite.Entities
             builder.Property(x => x.Artists);
             builder.Property(x => x.Favourite);
 
+            builder.HasIndex(x => x.Path);
+            builder.HasIndex(x => x.Name);
+            builder.HasIndex(x => x.Categories);
+            builder.HasIndex(x => x.Tags);
+
             builder.ToTable("Videos");
         }
     }
