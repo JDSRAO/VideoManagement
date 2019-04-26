@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VideoManagement.UI.WPF"
         mc:Ignorable="d"
-        Title="Play" Height="450" Width="800" Icon="{DynamicResource appIcon}" Loaded="Window_Loaded">
+        Title="Play" Height="450" Width="800" Icon="{StaticResource appIcon}" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -31,19 +31,19 @@
                 <Label Name="lblStatus" Content="Not playing..." HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="5,0" />
                 <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button Name="btnPlay" Click="btnPlay_Click" Style="{DynamicResource IconButtonStyle}">
-                        <Image Source="Images/icons8-play-32.png"/>
+                        <Image Source="{StaticResource mediaPlayIcon}"/>
                     </Button>
                     <Button Name="btnPause" Click="btnPause_Click" Style="{DynamicResource IconButtonStyle}">
-                        <Image Source="Images/icons8-pause-32.png"/>
+                        <Image Source="{StaticResource mediaPauseIcon}"/>
                     </Button>
                     <Button Name="btnStop" Click="btnStop_Click" Style="{DynamicResource IconButtonStyle}">
-                        <Image Source="Images/icons8-stop-32.png"/>
+                        <Image Source="{StaticResource mediaStopIcon}"/>
                     </Button>
                 </WrapPanel>
             </StackPanel>
             <StackPanel Margin="0,5,27,5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <Button Margin="10,0" Style="{DynamicResource IconButtonStyle}">
-                    <Image Source="Images/icons8-audio-32.png"/>
+                    <Image Source="{DynamicResource mediaSpeakerIcon}"/>
                 </Button>
                 <Slider x:Name="volumePosition" HorizontalAlignment="Right" Height="20" VerticalAlignment="Center" Width="195" ValueChanged="VolumePosition_ValueChanged" Maximum="100" Cursor="Hand" IsMoveToPointEnabled="True"/>
             </StackPanel>

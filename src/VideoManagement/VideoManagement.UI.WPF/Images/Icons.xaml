@@ -1,24 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:VideoManagement.UI.WPF.Images">
-    <BitmapImage x:Key="ImageSource1" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="C:\Users\SrinivasRao\Pictures\Saved Pictures\thumb-1920-637345.jpg"/>
+    
     <BitmapImage x:Key="appIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icon.ico"/>
-    <Path x:Key="AppIcon" Data="M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728
-	c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137
-	C461.001,110.259,418.135,67.393,365.257,67.393z M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607
-	c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z" Fill="#F61C0D" />
+    <BitmapImage x:Key="mediaSpeakerIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-audio-32.png"/>
+    <BitmapImage x:Key="mediaMuteIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-mute-32.png"/>
+    <BitmapImage x:Key="folderOpenedIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-opened-folder-32.png"/>
+    <BitmapImage x:Key="mediaPauseIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-pause-32.png"/>
+    <BitmapImage x:Key="mediaPlayIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-play-32.png"/>
+    <BitmapImage x:Key="searchIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-search-32.png"/>
+    <BitmapImage x:Key="folderSearchIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-search-folder-32.png"/>
+    <BitmapImage x:Key="mediaStopIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-stop-32.png"/>
 
-    <Canvas x:Key="FavouriteIcon">
-        <Path  Data="M365.257,67.393H95.744C42.866,67.393,0,110.259,0,163.137v134.728
-	c0,52.878,42.866,95.744,95.744,95.744h269.513c52.878,0,95.744-42.866,95.744-95.744V163.137
-	C461.001,110.259,418.135,67.393,365.257,67.393z M300.506,237.056l-126.06,60.123c-3.359,1.602-7.239-0.847-7.239-4.568V168.607
-	c0-3.774,3.982-6.22,7.348-4.514l126.06,63.881C304.363,229.873,304.298,235.248,300.506,237.056z" Fill="#F61C0D" />
-    </Canvas>
 
-    <Canvas x:Key="Favourite">
-        <Polygon Fill="#EFCE4A" Points="26.934,1.318 35.256,18.182 53.867,20.887 40.4,34.013 43.579,52.549 26.934,43.798 
-	10.288,52.549 13.467,34.013 0,20.887 18.611,18.182 "/>
-    </Canvas>
 
     <Style x:Key="IconButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Background" Value="{x:Null}"/>
@@ -28,7 +22,6 @@
         <Setter Property="Height" Value="20"/>
         <Setter Property="Width" Value="20"/>
     </Style>
-
 
 
 </ResourceDictionary>
