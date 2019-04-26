@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VideoManagement.UI.WPF"
         mc:Ignorable="d"
-        Title="Video Manager" Height="700" Width="1000" Icon="icon.png" MinWidth="1000" MinHeight="600">
+        Title="Video Manager" Height="700" Width="1000" MinWidth="1000" MinHeight="600" Icon="/VideoManagement.UI.WPF;component/Images/icon.ico">
     <Grid Height="669">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>

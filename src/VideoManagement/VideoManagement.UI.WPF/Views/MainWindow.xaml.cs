@@ -58,7 +58,7 @@ namespace VideoManagement.UI.WPF
             if(addedItems.Count > 0)
             {
                 var selectedItem = (Video)addedItems[0];
-                Play play = new Play(selectedItem);
+                PlayWindow play = new PlayWindow(selectedItem);
                 play.Loaded += Play_Loaded;
                 play.Show();
             }
