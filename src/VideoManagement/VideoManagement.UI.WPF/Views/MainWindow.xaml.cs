@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VideoManagement.Business;
 using VideoManagement.Models.Tables;
+using VideoManagement.UI.WPF.ViewModels;
 using Forms = System.Windows.Forms;
 
 namespace VideoManagement.UI.WPF
@@ -30,6 +31,7 @@ namespace VideoManagement.UI.WPF
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowModel();
             
         }
 
