@@ -6,6 +6,16 @@ namespace VideoManagement.Models.Business
 {
     public class Artist : BaseModel
     {
-        public string Name { get; set; }
+        public string Name
+        {
+            get => name;
+            set
+            {
+                name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        private string name { get; set; }
     }
 }
