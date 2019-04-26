@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VideoManagement.Business;
-using VideoManagement.Models;
+using VideoManagement.Models.Tables;
 using Forms = System.Windows.Forms;
 
 namespace VideoManagement.UI.WPF

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using VideoManagement.DataAccess.SQLite.Application;
-using VideoManagement.Models;
+using VideoManagement.Models.Tables;
 
 namespace VideoManagement.Business
 {

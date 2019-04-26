@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using VideoManagement.Business;
-using VideoManagement.Models;
+using VideoManagement.Models.Tables;
 
 namespace VideoManagement.UI.WPF
 {
