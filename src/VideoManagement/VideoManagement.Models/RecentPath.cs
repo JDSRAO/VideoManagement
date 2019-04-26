@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VideoManagement.Models.Application
+namespace VideoManagement.Models
 {
     public class RecentPath
     {

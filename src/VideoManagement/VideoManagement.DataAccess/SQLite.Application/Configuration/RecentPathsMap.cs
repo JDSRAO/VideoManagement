@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using VideoManagement.Models.Application;
+using VideoManagement.Models;
 
 namespace VideoManagement.DataAccess.SQLite.Application.Configuration
 {
