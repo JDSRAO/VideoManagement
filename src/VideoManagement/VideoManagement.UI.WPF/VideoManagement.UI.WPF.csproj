@@ -260,6 +260,10 @@
   <ItemGroup>
     <Resource Include="Images\icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-copy-96.png" />
+    <Resource Include="Images\icons8-heart-32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
