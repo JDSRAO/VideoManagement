@@ -10,7 +10,7 @@
     <Grid Height="669">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -30,6 +30,11 @@
                     <MenuItem Header="About Video Manager"/>
                 </MenuItem>
             </Menu>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ScrollViewer>
+                <views:VideosView x:Name="videosView"></views:VideosView>
+            </ScrollViewer>
         </Grid>
 
         <Grid Grid.Row="2">

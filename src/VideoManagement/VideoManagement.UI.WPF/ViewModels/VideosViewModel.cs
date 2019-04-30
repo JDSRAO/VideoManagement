@@ -15,6 +15,7 @@ namespace VideoManagement.UI.WPF.ViewModels
 
         public VideosViewModel(string path, string fileExtension)
         {
+            videoMgmtService = new VideoMgmtService(path, fileExtension);
             var videos = videoMgmtService.Get();
             this.videos = new ObservableCollection<Video>(videos);
         }

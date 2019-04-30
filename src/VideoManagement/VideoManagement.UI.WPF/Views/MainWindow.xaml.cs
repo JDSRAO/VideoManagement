@@ -50,6 +50,7 @@ namespace VideoManagement.UI.WPF
                     Application.Current.Properties.Add(AppProperties.Extension, extension);
                     videoMgmtService = new VideoMgmtService(path, extension);
                     RefreshPlaylist();
+                    videosView.DataContext = new VideosViewModel(path, extension);
                 }
             }
         }
