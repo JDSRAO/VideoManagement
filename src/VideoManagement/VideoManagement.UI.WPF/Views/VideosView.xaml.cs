@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using VideoManagement.UI.WPF.ViewModels;
 
 namespace VideoManagement.UI.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for RecentPathsView.xaml
+    /// Interaction logic for VideosView.xaml
     /// </summary>
-    public partial class RecentPathsView : UserControl
+    public partial class VideosView : UserControl
     {
-        public RecentPathsView()
+        public VideosView()
         {
             InitializeComponent();
-            DataContext = new RecentPathsViewModel();
         }
     }
 }

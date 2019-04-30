@@ -9,11 +9,11 @@ using VideoManagement.Models.Tables;
 
 namespace VideoManagement.UI.WPF.ViewModels
 {
-    public class RecentPathsModel : BaseViewModel
+    public class RecentPathsViewModel : BaseViewModel
     {
         private AppMgmtService appMgmtService = new AppMgmtService();
 
-        public RecentPathsModel()
+        public RecentPathsViewModel()
         {
             var recentPathsList = appMgmtService.GetRecentPaths();
             recentPaths = new ObservableCollection<RecentPath>(recentPathsList);
