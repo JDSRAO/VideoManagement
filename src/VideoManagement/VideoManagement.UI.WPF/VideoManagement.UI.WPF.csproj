@@ -165,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\RecentPathsModel.cs" />
+    <Compile Include="Views\RecentPathsView.xaml.cs">
+      <DependentUpon>RecentPathsView.xaml</DependentUpon>
+    </Compile>
     <Page Include="Images\Icons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -187,6 +191,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\PlayWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RecentPathsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

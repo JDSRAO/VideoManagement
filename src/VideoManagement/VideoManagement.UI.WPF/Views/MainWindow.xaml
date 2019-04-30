@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VideoManagement.UI.WPF"
+        xmlns:views="clr-namespace:VideoManagement.UI.WPF.Views"
         mc:Ignorable="d"
         Title="Video Manager" Height="700" Width="1000" MinWidth="1000" MinHeight="600" Icon="{StaticResource appIcon}">
     <Grid Height="669">
@@ -11,47 +12,76 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Margin="30,10.03,0,9.97" Orientation="Horizontal" Grid.Row="1" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Width="440">
-            <TextBox x:Name="CWD" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Enter path here..." VerticalAlignment="Center" Width="300" Margin="20,0,0,0" IsEnabled="False"/>
-            <Button x:Name="loadButton" Click="LoadButton_Click" Margin="10,0.02,0,0.02" ToolTip="Click here to load the files" Style="{DynamicResource IconButtonStyle}">
-                <Image Source="{StaticResource folderSearchIcon}"/>
-            </Button>
-        </StackPanel>
-        <Menu HorizontalAlignment="Left" Height="20" Margin="14,2.5,0,37.5" VerticalAlignment="Center" Grid.RowSpan="2" Width="150">
-            <MenuItem Header="File" Height="20" Width="75">
-                <MenuItem Header="Open" Height="20" Margin="27,0,0,0" Width="75"/>
-                <Separator/>
-                <MenuItem Header="Exit" Height="20" Margin="27,0,0,0" Width="75"/>
-            </MenuItem>
-            <MenuItem Header="Help" Height="20" Width="75">
-                <MenuItem Header="About Video Manager" HorizontalAlignment="Right" Height="20" Margin="27,0,0,0" Width="70"/>
-            </MenuItem>
-        </Menu>
-        <ListBox x:Name="Items" HorizontalAlignment="Center" Margin="10" Grid.Row="3" VerticalAlignment="Center" Grid.Column="1" ItemsSource="{Binding Videos}" SelectionChanged="Items_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Width="Auto">
-                        <ToggleButton MinWidth="100" MinHeight="100" MaxHeight="100" MaxWidth="100" >
-                            <ContentControl Content="{StaticResource searchIcon}"  />
-                        </ToggleButton>
-                        <Label Content="{Binding Name}"></Label>
-                        <Label Content="{Binding Views}"></Label>
+
+        <Grid Grid.Row="0">
+            <Menu>
+                <MenuItem Header="File">
+                    <MenuItem Header="Open"/>
+                    <Separator/>
+                    <MenuItem Header="Exit"/>
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="About Video Manager"/>
+                </MenuItem>
+            </Menu>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Width="440">
+                            <TextBox x:Name="CWD" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Enter path here..." VerticalAlignment="Center" Width="300" Margin="20,0,0,0" IsEnabled="False"/>
+                            <Button x:Name="loadButton" Click="LoadButton_Click" Margin="10,0.02,0,0.02" ToolTip="Click here to load the files" Style="{DynamicResource IconButtonStyle}">
+                                <Image Source="{StaticResource folderSearchIcon}"/>
+                            </Button>
+                        </StackPanel>
                     </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <StackPanel Margin="470,10,0,10" Orientation="Horizontal" Grid.Row="1" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Width="440">
-            <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="300" Margin="20,0,0,0"/>
-            <Button x:Name="searchButton" Margin="0,0.02,0,0.02" ToolTip="Click here to load the files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
-                <Image Source="../Images/icons8-search-32.png"/>
-            </Button>
-        </StackPanel>
-        <StatusBar HorizontalAlignment="Left" Height="20" Margin="0" Grid.Row="4" VerticalAlignment="Top"/>
+
+                    <StackPanel Orientation="Horizontal" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Width="440">
+                        <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="300" Margin="20,0,0,0"/>
+                        <Button x:Name="searchButton" Margin="0,0.02,0,0.02" ToolTip="Click here to load the files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
+                            <Image Source="../Images/icons8-search-32.png"/>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <StackPanel>
+                <ListBox x:Name="Items" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center" Grid.Column="1" ItemsSource="{Binding Videos}" SelectionChanged="Items_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Width="Auto">
+                                <ToggleButton MinWidth="100" MinHeight="100" MaxHeight="100" MaxWidth="100" >
+                                    <ContentControl Content="{StaticResource searchIcon}"  />
+                                </ToggleButton>
+                                <Label Content="{Binding Name}"></Label>
+                                <Label Content="{Binding Views}"></Label>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <StackPanel>
+                <!--<views:RecentPathsView></views:RecentPathsView>-->
+            </StackPanel>
+        </Grid>
+
+
+
+
+
+        <!--<StatusBar HorizontalAlignment="Left" Height="20" Margin="0" Grid.Row="4" VerticalAlignment="Top"/>-->
+        
     </Grid>
 </Window>
