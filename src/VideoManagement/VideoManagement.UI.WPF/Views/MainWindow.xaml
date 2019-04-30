@@ -13,7 +13,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -32,20 +32,20 @@
             </Menu>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <StackPanel Orientation="Horizontal">
                     <StackPanel>
-                        <StackPanel Orientation="Horizontal" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Width="440">
-                            <TextBox x:Name="CWD" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Enter path here..." VerticalAlignment="Center" Width="300" Margin="20,0,0,0" IsEnabled="False"/>
-                            <Button x:Name="loadButton" Click="LoadButton_Click" Margin="10,0.02,0,0.02" ToolTip="Click here to load the files" Style="{DynamicResource IconButtonStyle}">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center"  Width="440" Margin="30,10">
+                            <TextBox x:Name="CWD" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Enter path here..." VerticalAlignment="Center" Width="300"  IsEnabled="False"/>
+                            <Button x:Name="loadButton" Click="LoadButton_Click" ToolTip="Click here to load the files" Style="{DynamicResource IconButtonStyle}">
                                 <Image Source="{StaticResource folderSearchIcon}"/>
                             </Button>
                         </StackPanel>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Width="440">
-                        <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="300" Margin="20,0,0,0"/>
-                        <Button x:Name="searchButton" Margin="0,0.02,0,0.02" ToolTip="Click here to load the files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="440" Margin="30,10">
+                        <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="300" />
+                        <Button x:Name="searchButton"  ToolTip="Click here to load the files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
                             <Image Source="../Images/icons8-search-32.png"/>
                         </Button>
                     </StackPanel>
@@ -72,9 +72,9 @@
         </Grid>
 
         <Grid Grid.Row="4">
-            <StackPanel>
-                <!--<views:RecentPathsView></views:RecentPathsView>-->
-            </StackPanel>
+            <ScrollViewer>
+                <views:RecentPathsView></views:RecentPathsView>
+            </ScrollViewer>
         </Grid>
 
 

@@ -11,10 +11,17 @@
         <ListBox ItemsSource="{Binding RecentPaths}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Width="Auto">
+                    <StackPanel Width="Auto" Orientation="Horizontal">
+                        <Image Source="{StaticResource folderOpenedIcon}"></Image>
+                    <StackPanel>
                         <Label Content="{Binding Path=ID}"></Label>
-                        <Label Content="{Binding Path=Path}"></Label>
+                        <Label Content="{Binding Path=Path}"></Label> 
                     </StackPanel>
+                    <StackPanel>
+                        <Image Source="{StaticResource copyIcon}" Width="50" Height="50" />
+                    </StackPanel>
+
+                </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
