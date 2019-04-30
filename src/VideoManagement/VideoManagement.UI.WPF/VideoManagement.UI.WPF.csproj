@@ -179,6 +179,7 @@
     </Compile>
     <Compile Include="Commands\GetVideos.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainWindowModel.cs" />
     <Compile Include="ViewModels\PlayWindowModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

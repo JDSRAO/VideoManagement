@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ using VideoManagement.UI.WPF.Commands;
 
 namespace VideoManagement.UI.WPF.ViewModels
 {
-    public class MainWindowModel
+    public class MainWindowModel : BaseViewModel
     {
         public string Path
         {
@@ -18,6 +19,7 @@ namespace VideoManagement.UI.WPF.ViewModels
             set
             {
                 path = value;
+                OnPropertyChanged("Path");
             }
         }
 
@@ -27,10 +29,11 @@ namespace VideoManagement.UI.WPF.ViewModels
             set
             {
                 searchQuery = value;
+                OnPropertyChanged("SearchQuery");
             }
         }
 
-        public List<Video> Videos
+        public ObservableCollection<Video> Videos
         {
             get => videos;
             set
@@ -41,7 +44,7 @@ namespace VideoManagement.UI.WPF.ViewModels
 
         private string path { get; set; }
         private string searchQuery { get; set; }
-        private List<Video> videos { get; set; }
+        private ObservableCollection<Video> videos { get; set; }
 
         string selectedPath = string.Empty;
         string extension = ".mp4";
