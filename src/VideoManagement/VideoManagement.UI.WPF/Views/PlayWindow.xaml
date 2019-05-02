@@ -18,9 +18,7 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="1">
-            <StackPanel Margin="7.5,10" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="777" Height="359">
-                <MediaElement  Name="player" ScrubbingEnabled="True" MediaOpened="player_MediaOpened" HorizontalAlignment="Center" Height="345" VerticalAlignment="Center" Width="745" Margin="16,0" Stretch="Fill" LoadedBehavior="Manual" MediaEnded="Player_MediaEnded" />
-            </StackPanel>
+            <MediaElement  Name="player" ScrubbingEnabled="True" MediaOpened="player_MediaOpened" HorizontalAlignment="Center"  VerticalAlignment="Center"  Stretch="Uniform"  LoadedBehavior="Manual" MediaEnded="Player_MediaEnded" />
         </Grid>
 
         <Grid Grid.Row="2">
