@@ -50,23 +50,10 @@ namespace VideoManagement.UI.WPF
                     Application.Current.Properties.Add(AppProperties.Path, path);
                     Application.Current.Properties.Add(AppProperties.Extension, extension);
                     videoMgmtService = new VideoMgmtService(path, extension);
-                    AddNewTab();
+                    AddNewTab(path, extension);
                     RefreshPlaylist();
                 }
             }
-        }
-
-        private void AddNewTab()
-        {
-            var dataContext = new VideosViewModel(path, extension);
-            var view = new VideosView();
-            view.DataContext = dataContext;
-            var tab = new TabItem()
-            {
-                Header = path,
-                Content = view
-            };
-            tabs.Items.Add(tab);
         }
 
         private void Items_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -86,17 +73,38 @@ namespace VideoManagement.UI.WPF
             RefreshPlaylist();
         }
 
-        private void RefreshPlaylist(string query = null)
-        {
-            var videos = videoMgmtService.Get(query);
-            //Items.ItemsSource = videos.OrderBy(x => x.Name);
-        }
-
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             var query = searchText.Text;
             videoMgmtService = new VideoMgmtService(path, extension);
             RefreshPlaylist(query);
+        }
+
+        private void RecentPathsView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as RecentPathsView;
+            var recentPath = item.SelectedItem as RecentPath;
+            AddNewTab(recentPath.Path, recentPath.Extension);
+        }
+
+        private void AddNewTab(string path, string extension)
+        {
+            var dataContext = new VideosViewModel(path, extension);
+            var view = new VideosView();
+            view.DataContext = dataContext;
+            var tab = new TabItem()
+            {
+                Header = path,
+                Content = view
+            };
+            tabs.Items.Add(tab);
+            tabs.SelectedItem = tab;
+        }
+
+        private void RefreshPlaylist(string query = null)
+        {
+            var videos = videoMgmtService.Get(query);
+            //Items.ItemsSource = videos.OrderBy(x => x.Name);
         }
     }
 }

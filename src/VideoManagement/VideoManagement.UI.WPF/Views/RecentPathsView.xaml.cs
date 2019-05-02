@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VideoManagement.Models.Tables;
 using VideoManagement.UI.WPF.ViewModels;
 
 namespace VideoManagement.UI.WPF.Views
@@ -25,6 +26,16 @@ namespace VideoManagement.UI.WPF.Views
         {
             InitializeComponent();
             DataContext = new RecentPathsViewModel();
+            recentPaths.MouseDoubleClick += RecentPaths_MouseDoubleClick;
         }
+
+        private void RecentPaths_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            selectedItem = recentPaths.SelectedItem as RecentPath;
+        }
+
+        public RecentPath SelectedItem => selectedItem;
+
+        private RecentPath selectedItem { get; set; }        
     }
 }

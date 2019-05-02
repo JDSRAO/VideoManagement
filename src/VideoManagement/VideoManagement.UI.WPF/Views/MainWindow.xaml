@@ -65,7 +65,7 @@
 
                         <Grid Grid.Row="1">
                             <ScrollViewer>
-                                <views:RecentPathsView></views:RecentPathsView>
+                                <views:RecentPathsView MouseDoubleClick="RecentPathsView_MouseDoubleClick"></views:RecentPathsView>
                             </ScrollViewer>
                         </Grid>
 
