@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VideoManagement.Models.Tables;
 
 namespace VideoManagement.UI.WPF.Views
 {
@@ -25,10 +26,12 @@ namespace VideoManagement.UI.WPF.Views
             InitializeComponent();
         }
 
-        private void RefreshPlaylist(string query = null)
+        public event EventHandler<Video> ItemSelected;
+
+        private void Items_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //var videos = videoMgmtService.Get(query);
-            //Items.ItemsSource = videos.OrderBy(x => x.Name);
+            var selectedItem = Items.SelectedItem as Video;
+            ItemSelected?.Invoke(this, selectedItem);
         }
     }
 }

@@ -45,27 +45,19 @@ namespace VideoManagement.UI.WPF
                 {
                     path = dialog.SelectedPath;
                     CWD.Text = path;
-                    Application.Current.Properties.Remove(AppProperties.Path);
-                    Application.Current.Properties.Remove(AppProperties.Extension);
-                    Application.Current.Properties.Add(AppProperties.Path, path);
-                    Application.Current.Properties.Add(AppProperties.Extension, extension);
+                    AddEditProperties();
                     videoMgmtService = new VideoMgmtService(path, extension);
                     AddNewTab(path, extension);
-                    RefreshPlaylist();
                 }
             }
         }
 
-        private void Items_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void AddEditProperties()
         {
-            var addedItems = e.AddedItems;
-            if(addedItems.Count > 0)
-            {
-                var selectedItem = (Video)addedItems[0];
-                PlayWindow play = new PlayWindow(selectedItem);
-                play.Loaded += Play_Loaded;
-                play.Show();
-            }
+            Application.Current.Properties.Remove(AppProperties.Path);
+            Application.Current.Properties.Remove(AppProperties.Extension);
+            Application.Current.Properties.Add(AppProperties.Path, path);
+            Application.Current.Properties.Add(AppProperties.Extension, extension);
         }
 
         private void Play_Loaded(object sender, RoutedEventArgs e)
@@ -80,10 +72,21 @@ namespace VideoManagement.UI.WPF
             RefreshPlaylist(query);
         }
 
+        private void View_ItemSelected(object sender, Video e)
+        {
+            var selectedItem = e;
+            AddEditProperties();
+            videoMgmtService = new VideoMgmtService(path, extension);
+            PlayWindow play = new PlayWindow(selectedItem);
+            play.Loaded += Play_Loaded;
+            play.Show();
+        }
+
         private void RecentPathsView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var item = sender as RecentPathsView;
             var recentPath = item.SelectedItem as RecentPath;
+            path = recentPath.Path;
             AddNewTab(recentPath.Path, recentPath.Extension);
         }
 
@@ -91,6 +94,7 @@ namespace VideoManagement.UI.WPF
         {
             var dataContext = new VideosViewModel(path, extension);
             var view = new VideosView();
+            view.ItemSelected += View_ItemSelected;
             view.DataContext = dataContext;
             var tab = new TabItem()
             {

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:VideoManagement.UI.WPF.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <ListBox x:Name="Items" ItemsSource="{Binding Videos}">
+    <ListBox x:Name="Items" ItemsSource="{Binding Videos}" MouseDoubleClick="Items_MouseDoubleClick">
         <ListBox.ItemTemplate>
             <DataTemplate>
                 <StackPanel Width="Auto" Orientation="Horizontal">
