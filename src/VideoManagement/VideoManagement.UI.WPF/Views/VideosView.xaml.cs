@@ -24,5 +24,11 @@ namespace VideoManagement.UI.WPF.Views
         {
             InitializeComponent();
         }
+
+        private void RefreshPlaylist(string query = null)
+        {
+            //var videos = videoMgmtService.Get(query);
+            //Items.ItemsSource = videos.OrderBy(x => x.Name);
+        }
     }
 }

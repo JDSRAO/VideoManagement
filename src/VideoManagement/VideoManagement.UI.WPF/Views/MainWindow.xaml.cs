@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using VideoManagement.Business;
 using VideoManagement.Models.Tables;
 using VideoManagement.UI.WPF.ViewModels;
+using VideoManagement.UI.WPF.Views;
 using Forms = System.Windows.Forms;
 
 namespace VideoManagement.UI.WPF
@@ -49,10 +50,24 @@ namespace VideoManagement.UI.WPF
                     Application.Current.Properties.Add(AppProperties.Path, path);
                     Application.Current.Properties.Add(AppProperties.Extension, extension);
                     videoMgmtService = new VideoMgmtService(path, extension);
+                    AddNewTab();
                     RefreshPlaylist();
                     videosView.DataContext = new VideosViewModel(path, extension);
                 }
             }
+        }
+
+        private void AddNewTab()
+        {
+            var dataContext = new VideosViewModel(path, extension);
+            var view = new VideosView();
+            view.DataContext = dataContext;
+            var tab = new TabItem()
+            {
+                Header = path,
+                Content = view
+            };
+            tabs.Items.Add(tab);
         }
 
         private void Items_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -75,7 +90,7 @@ namespace VideoManagement.UI.WPF
         private void RefreshPlaylist(string query = null)
         {
             var videos = videoMgmtService.Get(query);
-            Items.ItemsSource = videos.OrderBy(x => x.Name);
+            //Items.ItemsSource = videos.OrderBy(x => x.Name);
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)

@@ -76,21 +76,6 @@
                         </Grid>
 
                         <Grid Grid.Row="3">
-                            <StackPanel>
-                                <ListBox x:Name="Items" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center" Grid.Column="1" ItemsSource="{Binding Videos}" SelectionChanged="Items_SelectionChanged">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Width="Auto">
-                                                <ToggleButton MinWidth="100" MinHeight="100" MaxHeight="100" MaxWidth="100" >
-                                                    <ContentControl Content="{StaticResource searchIcon}"  />
-                                                </ToggleButton>
-                                                <Label Content="{Binding Name}"></Label>
-                                                <Label Content="{Binding Views}"></Label>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
-                            </StackPanel>
                         </Grid>
 
                         <Grid Grid.Row="4">
