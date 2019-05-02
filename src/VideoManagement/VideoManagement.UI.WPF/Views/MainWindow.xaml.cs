@@ -52,7 +52,6 @@ namespace VideoManagement.UI.WPF
                     videoMgmtService = new VideoMgmtService(path, extension);
                     AddNewTab();
                     RefreshPlaylist();
-                    videosView.DataContext = new VideosViewModel(path, extension);
                 }
             }
         }
