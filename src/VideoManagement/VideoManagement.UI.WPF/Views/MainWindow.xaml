@@ -10,6 +10,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         
@@ -29,8 +30,16 @@
                 </MenuItem>
             </Menu>
         </Grid>
-
+        
         <Grid Grid.Row="1">
+            <ToolBar>
+                <Button x:Name="loadButton" Click="LoadButton_Click" ToolTip="Click here to load the files" Style="{DynamicResource IconButtonStyle}">
+                    <Image Source="{StaticResource folderOpenedIcon}"/>
+                </Button>
+            </ToolBar>
+        </Grid>
+
+        <Grid Grid.Row="2">
             <TabControl x:Name="tabs" Height="Auto" Width="Auto">
                 <TabItem Header="Home">
                     <Grid Background="#FFE5E5E5" Height="669">
@@ -44,22 +53,11 @@
 
                         <Grid Grid.Row="0">
                             <GroupBox Header="Actions">
-                                <StackPanel Orientation="Horizontal">
-                                    <StackPanel>
-                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center"  Width="440" Margin="20,10">
-                                            <TextBox x:Name="CWD" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Enter path here..." VerticalAlignment="Center" Width="300"  IsEnabled="False"/>
-                                            <Button x:Name="loadButton" Click="LoadButton_Click" ToolTip="Click here to load the files" Style="{DynamicResource IconButtonStyle}">
-                                                <Image Source="{StaticResource folderOpenedIcon}"/>
-                                            </Button>
-                                        </StackPanel>
-                                    </StackPanel>
-
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="440" Margin="20,10">
-                                        <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="300" />
-                                        <Button x:Name="searchButton"  ToolTip="Click here to load the files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
-                                            <Image Source="{StaticResource searchIcon}"/>
-                                        </Button>
-                                    </StackPanel>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="440" Margin="20,10">
+                                    <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="300" />
+                                    <Button x:Name="searchButton"  ToolTip="Click here to load the files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
+                                        <Image Source="{StaticResource searchIcon}"/>
+                                    </Button>
                                 </StackPanel>
                             </GroupBox>
                         </Grid>

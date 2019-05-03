@@ -44,7 +44,6 @@ namespace VideoManagement.UI.WPF
                 if(!string.IsNullOrEmpty(dialog.SelectedPath))
                 {
                     path = dialog.SelectedPath;
-                    CWD.Text = path;
                     AddEditProperties();
                     videoMgmtService = new VideoMgmtService(path, extension);
                     AddNewTab(path, extension);
