@@ -35,7 +35,7 @@
                 <TabItem Header="Home">
                     <Grid Background="#FFE5E5E5" Height="669">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="80"/>
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -46,18 +46,18 @@
                             <GroupBox Header="Actions">
                                 <StackPanel Orientation="Horizontal">
                                     <StackPanel>
-                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center"  Width="440" Margin="30,10">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center"  Width="440" Margin="20,10">
                                             <TextBox x:Name="CWD" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Enter path here..." VerticalAlignment="Center" Width="300"  IsEnabled="False"/>
                                             <Button x:Name="loadButton" Click="LoadButton_Click" ToolTip="Click here to load the files" Style="{DynamicResource IconButtonStyle}">
-                                                <Image Source="{StaticResource folderSearchIcon}"/>
+                                                <Image Source="{StaticResource folderOpenedIcon}"/>
                                             </Button>
                                         </StackPanel>
                                     </StackPanel>
 
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="440" Margin="30,10">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="440" Margin="20,10">
                                         <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="300" />
                                         <Button x:Name="searchButton"  ToolTip="Click here to load the files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
-                                            <Image Source="../Images/icons8-search-32.png"/>
+                                            <Image Source="{StaticResource searchIcon}"/>
                                         </Button>
                                     </StackPanel>
                                 </StackPanel>
