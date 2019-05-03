@@ -16,4 +16,8 @@
         <Setter Property="Padding" Value="5,5"/>
     </Style>
 
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+    </Style>
+
 </ResourceDictionary>

@@ -43,10 +43,12 @@
         <Grid Grid.Row="0" Grid.Column="1">
             <GroupBox Header="Details">
                 <StackPanel Width="Auto">
-                    <Label x:Name="name" Content="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay}"></Label>
-                    <Label x:Name="path" Content="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay}"></Label>
-                    <Label>Views :</Label>
-                    <Label x:Name="views" Content="{Binding ElementName=Items, Path=SelectedItem.Views, Mode=OneWay}"></Label>
+                    <TextBlock x:Name="name" Text="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay, StringFormat= Name : {0} }"></TextBlock>
+                    <TextBlock x:Name="path" Text="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay, StringFormat= Path : {0} }"></TextBlock>
+                    <TextBlock x:Name="views" Text="{Binding ElementName=Items, Path=SelectedItem.Views, Mode=OneWay, StringFormat=Views : {0} }"></TextBlock>
+                    <Button Style="{StaticResource IconButtonStyle}">
+                        <Image Source="{StaticResource updateIcon}"/>
+                    </Button>
                 </StackPanel>
             </GroupBox>
         </Grid>
