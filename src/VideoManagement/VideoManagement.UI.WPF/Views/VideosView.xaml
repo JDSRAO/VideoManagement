@@ -30,8 +30,10 @@
                                 <Label Content="{Binding Name}"></Label>
                                 <Label Content="{Binding Views}"></Label>
                             </StackPanel>
-                            <StackPanel>
-                                <Image Source="{StaticResource copyIcon}" Width="50" Height="50" />
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Button Style="{StaticResource IconButtonStyle}" ToolTip="Copy file path">
+                                    <Image Source="{StaticResource copyIcon}"/>
+                                </Button>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>

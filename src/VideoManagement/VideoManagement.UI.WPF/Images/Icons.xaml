@@ -11,7 +11,7 @@
     <BitmapImage x:Key="mediaPlayIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-play-32.png"/>
     
     <BitmapImage x:Key="searchIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-search-32.png"/>
-    <BitmapImage x:Key="copyIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-copy-96.png"/>
+    <BitmapImage x:Key="copyIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-copy-to-clipboard-32.png"/>
     <BitmapImage x:Key="heartIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-heart-32.png"/>
     <BitmapImage x:Key="updateIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-update-32.png"/>
 
