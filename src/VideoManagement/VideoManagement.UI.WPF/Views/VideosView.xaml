@@ -6,24 +6,49 @@
              xmlns:local="clr-namespace:VideoManagement.UI.WPF.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <ListBox x:Name="Items" ItemsSource="{Binding Videos}" MouseDoubleClick="Items_MouseDoubleClick" SelectedItem="{Binding SelectedVideo}">
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <StackPanel Width="Auto" Orientation="Horizontal">
-                    <StackPanel>
-                        <ToggleButton MinWidth="100" MinHeight="100" MaxHeight="100" MaxWidth="100" >
-                            <ContentControl Content="{StaticResource searchIcon}"  />
-                        </ToggleButton>
-                    </StackPanel>
-                    <StackPanel>
-                        <Label Content="{Binding Name}"></Label>
-                        <Label Content="{Binding Views}"></Label>
-                    </StackPanel>
-                    <StackPanel>
-                        <Image Source="{StaticResource copyIcon}" Width="50" Height="50" />
-                    </StackPanel>
-                </StackPanel>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".8*"/>
+            <ColumnDefinition Width=".2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0">
+            <ListBox x:Name="Items" ItemsSource="{Binding Videos}" MouseDoubleClick="Items_MouseDoubleClick" SelectedItem="{Binding SelectedVideo}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="Auto" Orientation="Horizontal">
+                            <StackPanel>
+                                <ToggleButton MinWidth="100" MinHeight="100" MaxHeight="100" MaxWidth="100" >
+                                    <ContentControl Content="{StaticResource searchIcon}"  />
+                                </ToggleButton>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="{Binding Name}"></Label>
+                                <Label Content="{Binding Views}"></Label>
+                            </StackPanel>
+                            <StackPanel>
+                                <Image Source="{StaticResource copyIcon}" Width="50" Height="50" />
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.Column="1">
+            <StackPanel Width="Auto">
+                <Label x:Name="name" Content="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay}"></Label>
+                <Label x:Name="path" Content="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay}"></Label>
+                <Label>Views : </Label>
+                <Label x:Name="views" Content="{Binding ElementName=Items, Path=SelectedItem.Views, Mode=OneWay}"></Label>
+            </StackPanel>
+        </Grid>
+        
+    </Grid>
+    
 </UserControl>
