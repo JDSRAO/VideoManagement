@@ -33,7 +33,7 @@
         
         <Grid Grid.Row="1">
             <ToolBar>
-                <Button x:Name="loadButton" Click="LoadButton_Click" ToolTip="Click here to load the files" Style="{DynamicResource IconButtonStyle}">
+                <Button x:Name="loadButton" Click="LoadButton_Click" ToolTip="Open folder" Style="{DynamicResource IconButtonStyle}">
                     <Image Source="{StaticResource folderOpenedIcon}"/>
                 </Button>
             </ToolBar>
