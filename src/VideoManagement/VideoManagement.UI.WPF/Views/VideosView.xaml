@@ -8,6 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
@@ -16,7 +17,43 @@
             <ColumnDefinition Width=".2*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0">
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".8*"/>
+                    <ColumnDefinition Width=".2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <GroupBox Header="Details">
+                        <StackPanel Width="Auto">
+                            <TextBlock x:Name="name" Text="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay, StringFormat= Name : {0} }"></TextBlock>
+                            <TextBlock x:Name="path" Text="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay, StringFormat= Path : {0} }"></TextBlock>
+                            <TextBlock x:Name="views" Text="{Binding ElementName=Items, Path=SelectedItem.Views, Mode=OneWay, StringFormat=Views : {0} }"></TextBlock>
+                            <Button Style="{StaticResource IconButtonStyle}">
+                                <Image Source="{StaticResource updateIcon}"/>
+                            </Button>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="Auto">
+                        <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="130"/>
+                        <Button x:Name="searchButton"  ToolTip="Search files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
+                            <Image Source="{StaticResource searchIcon}"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <ListBox x:Name="Items" ItemsSource="{Binding Videos}" MouseDoubleClick="Items_MouseDoubleClick" SelectedItem="{Binding SelectedVideo}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -42,8 +79,8 @@
 
         </Grid>
 
-        <Grid Grid.Row="0" Grid.Column="1">
-            <GroupBox Header="Details">
+        <Grid Grid.Row="1" Grid.Column="1">
+            <!--<GroupBox Header="Details">
                 <StackPanel Width="Auto">
                     <TextBlock x:Name="name" Text="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay, StringFormat= Name : {0} }"></TextBlock>
                     <TextBlock x:Name="path" Text="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay, StringFormat= Path : {0} }"></TextBlock>
@@ -52,7 +89,7 @@
                         <Image Source="{StaticResource updateIcon}"/>
                     </Button>
                 </StackPanel>
-            </GroupBox>
+            </GroupBox>-->
         </Grid>
         
     </Grid>
