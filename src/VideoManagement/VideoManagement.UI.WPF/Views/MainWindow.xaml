@@ -42,9 +42,8 @@
         <Grid Grid.Row="2">
             <TabControl x:Name="tabs" Height="Auto" Width="Auto">
                 <TabItem Header="Home">
-                    <Grid Background="#FFE5E5E5" Height="669">
+                    <Grid Height="669">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="80"/>
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -52,17 +51,6 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Row="0">
-                            <GroupBox Header="Actions">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="440" Margin="20,10">
-                                    <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="300" />
-                                    <Button x:Name="searchButton"  ToolTip="Click here to load the files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
-                                        <Image Source="{StaticResource searchIcon}"/>
-                                    </Button>
-                                </StackPanel>
-                            </GroupBox>
-                        </Grid>
-
-                        <Grid Grid.Row="1">
                             <GroupBox Header="Recent Paths">
                                 <ScrollViewer>
                                     <views:RecentPathsView MouseDoubleClick="RecentPathsView_MouseDoubleClick"></views:RecentPathsView>
@@ -70,17 +58,12 @@
                             </GroupBox>
                         </Grid>
 
-
-
-
-
                         <!--<StatusBar HorizontalAlignment="Left" Height="20" Margin="0" Grid.Row="4" VerticalAlignment="Top"/>-->
 
                     </Grid>
                 </TabItem>
-                
+
                 <TabItem Header="Configuration">
-                    <Grid Background="#FFE5E5E5"/>
                 </TabItem>
             </TabControl>
         </Grid>

@@ -66,9 +66,9 @@ namespace VideoManagement.UI.WPF
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            var query = searchText.Text;
+            //var query = searchText.Text;
             videoMgmtService = new VideoMgmtService(path, extension);
-            RefreshPlaylist(query);
+            //RefreshPlaylist(query);
         }
 
         private void View_ItemSelected(object sender, Video e)
