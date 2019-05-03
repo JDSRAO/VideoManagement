@@ -41,12 +41,14 @@
         </Grid>
 
         <Grid Grid.Row="0" Grid.Column="1">
-            <StackPanel Width="Auto">
-                <Label x:Name="name" Content="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay}"></Label>
-                <Label x:Name="path" Content="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay}"></Label>
-                <Label>Views : </Label>
-                <Label x:Name="views" Content="{Binding ElementName=Items, Path=SelectedItem.Views, Mode=OneWay}"></Label>
-            </StackPanel>
+            <GroupBox Header="Details">
+                <StackPanel Width="Auto">
+                    <Label x:Name="name" Content="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay}"></Label>
+                    <Label x:Name="path" Content="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay}"></Label>
+                    <Label>Views :</Label>
+                    <Label x:Name="views" Content="{Binding ElementName=Items, Path=SelectedItem.Views, Mode=OneWay}"></Label>
+                </StackPanel>
+            </GroupBox>
         </Grid>
         
     </Grid>

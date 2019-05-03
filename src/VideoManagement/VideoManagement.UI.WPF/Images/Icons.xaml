@@ -16,19 +16,5 @@
     
     <BitmapImage x:Key="folderOpenedIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-opened-folder-32.png"/>
     <BitmapImage x:Key="folderSearchIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-search-folder-32.png"/>
-    
-    
-
-
-
-    <Style x:Key="IconButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{x:Null}"/>
-        <Setter Property="BorderBrush" Value="{x:Null}"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Height" Value="20"/>
-        <Setter Property="Width" Value="20"/>
-    </Style>
-
-
+   
 </ResourceDictionary>

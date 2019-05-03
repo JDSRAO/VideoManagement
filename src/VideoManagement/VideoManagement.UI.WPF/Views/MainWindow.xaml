@@ -43,30 +43,33 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Row="0">
-                            <StackPanel Orientation="Horizontal">
-                                <StackPanel>
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center"  Width="440" Margin="30,10">
-                                        <TextBox x:Name="CWD" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Enter path here..." VerticalAlignment="Center" Width="300"  IsEnabled="False"/>
-                                        <Button x:Name="loadButton" Click="LoadButton_Click" ToolTip="Click here to load the files" Style="{DynamicResource IconButtonStyle}">
-                                            <Image Source="{StaticResource folderSearchIcon}"/>
+                            <GroupBox Header="Actions">
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center"  Width="440" Margin="30,10">
+                                            <TextBox x:Name="CWD" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Enter path here..." VerticalAlignment="Center" Width="300"  IsEnabled="False"/>
+                                            <Button x:Name="loadButton" Click="LoadButton_Click" ToolTip="Click here to load the files" Style="{DynamicResource IconButtonStyle}">
+                                                <Image Source="{StaticResource folderSearchIcon}"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="440" Margin="30,10">
+                                        <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="300" />
+                                        <Button x:Name="searchButton"  ToolTip="Click here to load the files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
+                                            <Image Source="../Images/icons8-search-32.png"/>
                                         </Button>
                                     </StackPanel>
                                 </StackPanel>
-
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="440" Margin="30,10">
-                                    <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="300" />
-                                    <Button x:Name="searchButton"  ToolTip="Click here to load the files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
-                                        <Image Source="../Images/icons8-search-32.png"/>
-                                    </Button>
-                                </StackPanel>
-                            </StackPanel>
-
+                            </GroupBox>
                         </Grid>
 
                         <Grid Grid.Row="1">
-                            <ScrollViewer>
-                                <views:RecentPathsView MouseDoubleClick="RecentPathsView_MouseDoubleClick"></views:RecentPathsView>
-                            </ScrollViewer>
+                            <GroupBox Header="Recent Paths">
+                                <ScrollViewer>
+                                    <views:RecentPathsView MouseDoubleClick="RecentPathsView_MouseDoubleClick"></views:RecentPathsView>
+                                </ScrollViewer>
+                            </GroupBox>
                         </Grid>
 
 
