@@ -11,15 +11,6 @@ namespace VideoManagement.UI.WPF.ViewModels
 {
     public class VideosViewModel : BaseViewModel
     {
-        private VideoMgmtService videoMgmtService;
-
-        public VideosViewModel(string path, string fileExtension)
-        {
-            videoMgmtService = new VideoMgmtService(path, fileExtension);
-            var videos = videoMgmtService.Get().OrderBy(x => x.Name);
-            this.videos = new ObservableCollection<Video>(videos);
-        }
-
         public ObservableCollection<Video> Videos
         {
             get => videos;
@@ -30,7 +21,30 @@ namespace VideoManagement.UI.WPF.ViewModels
             }
         }
 
+        public Video SelectedVideo
+        {
+            get => selectedVideo;
+            set
+            {
+                selectedVideo = value;
+                OnPropertyChanged("SelectedVideo");
+            }
+        }
 
         private ObservableCollection<Video> videos { get; set; }
+        private Video selectedVideo { get; set; }
+        private VideoMgmtService videoMgmtService { get; set; }
+
+        public VideosViewModel(string path, string fileExtension)
+        {
+            GetVideos(path, fileExtension);
+        }
+
+        private void GetVideos(string path, string fileExtension)
+        {
+            videoMgmtService = new VideoMgmtService(path, fileExtension);
+            var videos = videoMgmtService.Get().OrderBy(x => x.Name);
+            this.videos = new ObservableCollection<Video>(videos);
+        }
     }
 }
