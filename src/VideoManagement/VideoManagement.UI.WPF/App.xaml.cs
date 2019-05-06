@@ -16,7 +16,6 @@ namespace VideoManagement.UI.WPF
     public partial class App : Application
     {
         public static string Path => (string) Current.Properties[AppProperties.Path];
-        public static string Exntension => (string) Current.Properties[AppProperties.Extension];
 
         protected override void OnStartup(StartupEventArgs e)
         {

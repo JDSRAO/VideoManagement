@@ -10,7 +10,7 @@ namespace VideoManagement.Business
 {
     public class VideoMgmtService : BaseManager
     {
-        public VideoMgmtService(string path, string fileExtension) : base(path, fileExtension)
+        public VideoMgmtService(string path) : base(path)
         {
         }
 

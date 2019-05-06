@@ -12,6 +12,7 @@ namespace VideoManagement.DataAccess.SQLite.Application
         public string ConnectionString { get; }
 
         public DbSet<RecentPath> RecentPaths { get; set; }
+        public DbSet<FileExtensions> FileExtensions { get; set; }
 
         public ApplicationDBContext()
         {
@@ -27,6 +28,12 @@ namespace VideoManagement.DataAccess.SQLite.Application
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite($"Data Source={ConnectionString}");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<FileExtensions>().HasData(Models.Tables.FileExtensions.DefaultExtensions());
         }
     }
 }

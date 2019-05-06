@@ -7,18 +7,15 @@ using VideoManagement.Models.Tables;
 
 namespace VideoManagement.DataAccess.SQLite.Application.Configuration
 {
-    public class RecentPathsMap : IEntityTypeConfiguration<RecentPath>
+    public class FileExtensionsMap : IEntityTypeConfiguration<FileExtensions>
     {
-        public void Configure(EntityTypeBuilder<RecentPath> builder)
+        public void Configure(EntityTypeBuilder<FileExtensions> builder)
         {
             builder.HasKey(x => x.ID);
 
-            builder.Property(x => x.Path);
-            builder.Property(x => x.AccessedOn);
+            builder.Property(x => x.Format);
 
-            builder.HasIndex(x => x.Path);
-
-            builder.ToTable("RecentPaths");
+            builder.ToTable("FileExtensions");
         }
     }
 }
