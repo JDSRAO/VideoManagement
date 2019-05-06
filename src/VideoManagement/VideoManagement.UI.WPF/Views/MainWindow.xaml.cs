@@ -97,7 +97,7 @@ namespace VideoManagement.UI.WPF
             view.DataContext = dataContext;
             var tab = new TabItem()
             {
-                Header = path,
+                Header = System.IO.Path.GetFileName(path),
                 Content = view
             };
             tabs.Items.Add(tab);
