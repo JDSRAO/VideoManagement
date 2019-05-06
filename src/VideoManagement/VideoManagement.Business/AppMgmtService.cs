@@ -11,12 +11,11 @@ namespace VideoManagement.Business
     {
         private ApplicationDBContext dBContext = new ApplicationDBContext();
 
-        public Guid AddPath(string path, string extension)
+        public Guid AddPath(string path)
         {
             var recentPath = new RecentPath()
             {
                 Path = path,
-                Extension = extension,
                 AccessedOn = DateTime.Now
             };
             var item = dBContext.RecentPaths.Add(recentPath);
@@ -24,12 +23,12 @@ namespace VideoManagement.Business
             return item.Entity.ID;
         }
 
-        public Guid ConfigurePreConditionsForPath(string path, string extension)
+        public Guid ConfigurePreConditionsForPath(string path)
         {
-            var item = dBContext.RecentPaths.Where(x => x.Path.Equals(path) && x.Extension.Equals(extension)).FirstOrDefault();
+            var item = dBContext.RecentPaths.Where(x => x.Path.Equals(path)).FirstOrDefault();
             if (item == null)
             {
-                return AddPath(path, extension);
+                return AddPath(path);
             }
             else
             {
@@ -42,10 +41,10 @@ namespace VideoManagement.Business
 
         public Guid CreatePathIfNotExists(string path, string extension)
         {
-            var item = dBContext.RecentPaths.Where(x => x.Path.Equals(path) && x.Extension.Equals(extension)).FirstOrDefault();
+            var item = dBContext.RecentPaths.Where(x => x.Path.Equals(path)).FirstOrDefault();
             if (item == null)
             {
-                return AddPath(path, extension);
+                return AddPath(path);
             }
             else
             {
@@ -56,6 +55,11 @@ namespace VideoManagement.Business
         public List<RecentPath> GetRecentPaths()
         {
             return dBContext.RecentPaths.OrderByDescending(x => x.AccessedOn).ToList();
+        }
+
+        public List<FileExtensions> GetSupportedFileExtensions()
+        {
+            return dBContext.FileExtensions.ToList();
         }
     }
 }

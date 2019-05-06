@@ -14,7 +14,6 @@ namespace VideoManagement.DataAccess.SQLite.Application.Configuration
             builder.HasKey(x => x.ID);
 
             builder.Property(x => x.Path);
-            builder.Property(x => x.Extension);
             builder.Property(x => x.AccessedOn);
 
             builder.HasIndex(x => x.Path);

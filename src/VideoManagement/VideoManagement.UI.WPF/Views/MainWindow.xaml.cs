@@ -26,8 +26,7 @@ namespace VideoManagement.UI.WPF
     public partial class MainWindow : Window
     {
         private VideoMgmtService videoMgmtService;
-        string path = string.Empty; 
-        string extension = ".mp4";
+        string path = string.Empty;
 
         public MainWindow()
         {
@@ -45,8 +44,8 @@ namespace VideoManagement.UI.WPF
                 {
                     path = dialog.SelectedPath;
                     AddEditProperties();
-                    videoMgmtService = new VideoMgmtService(path, extension);
-                    AddNewTab(path, extension);
+                    videoMgmtService = new VideoMgmtService(path);
+                    AddNewTab(path);
                 }
             }
         }
@@ -56,7 +55,6 @@ namespace VideoManagement.UI.WPF
             Application.Current.Properties.Remove(AppProperties.Path);
             Application.Current.Properties.Remove(AppProperties.Extension);
             Application.Current.Properties.Add(AppProperties.Path, path);
-            Application.Current.Properties.Add(AppProperties.Extension, extension);
         }
 
         private void Play_Loaded(object sender, RoutedEventArgs e)
@@ -67,7 +65,7 @@ namespace VideoManagement.UI.WPF
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             //var query = searchText.Text;
-            videoMgmtService = new VideoMgmtService(path, extension);
+            videoMgmtService = new VideoMgmtService(path);
             //RefreshPlaylist(query);
         }
 
@@ -75,7 +73,7 @@ namespace VideoManagement.UI.WPF
         {
             var selectedItem = e;
             AddEditProperties();
-            videoMgmtService = new VideoMgmtService(path, extension);
+            videoMgmtService = new VideoMgmtService(path);
             PlayWindow play = new PlayWindow(selectedItem);
             play.Loaded += Play_Loaded;
             play.Show();
@@ -86,12 +84,12 @@ namespace VideoManagement.UI.WPF
             var item = sender as RecentPathsView;
             var recentPath = item.SelectedItem as RecentPath;
             path = recentPath.Path;
-            AddNewTab(recentPath.Path, recentPath.Extension);
+            AddNewTab(recentPath.Path);
         }
 
-        private void AddNewTab(string path, string extension)
+        private void AddNewTab(string path)
         {
-            var dataContext = new VideosViewModel(path, extension);
+            var dataContext = new VideosViewModel(path);
             var view = new VideosView();
             view.ItemSelected += View_ItemSelected;
             view.DataContext = dataContext;

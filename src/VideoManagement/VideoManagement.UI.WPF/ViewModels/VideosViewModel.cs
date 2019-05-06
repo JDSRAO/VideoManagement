@@ -35,14 +35,14 @@ namespace VideoManagement.UI.WPF.ViewModels
         private Video selectedVideo { get; set; }
         private VideoMgmtService videoMgmtService { get; set; }
 
-        public VideosViewModel(string path, string fileExtension)
+        public VideosViewModel(string path)
         {
-            GetVideos(path, fileExtension);
+            GetVideos(path);
         }
 
-        private void GetVideos(string path, string fileExtension)
+        private void GetVideos(string path)
         {
-            videoMgmtService = new VideoMgmtService(path, fileExtension);
+            videoMgmtService = new VideoMgmtService(path);
             var videos = videoMgmtService.Get().OrderBy(x => x.Name);
             this.videos = new ObservableCollection<Video>(videos);
         }

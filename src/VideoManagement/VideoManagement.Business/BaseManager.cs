@@ -11,19 +11,17 @@ namespace VideoManagement.Business
     public class BaseManager
     {
         private string DirectoryPath { get; }
-        private string FilesToConsider { get; }
         public FileManagerDbContext context { get; }
         private AppMgmtService appMgmtService { get; }
 
-        private string DBFileName = "searchEngine.db";
+        private string DBFileName = "searchEngine";
 
-        public BaseManager(string path, string fileExtension)
+        public BaseManager(string path)
         {
-            FilesToConsider = fileExtension;
             DirectoryPath = path;
             appMgmtService = new AppMgmtService();
-            Guid pathId = appMgmtService.ConfigurePreConditionsForPath(path, fileExtension);
-            var fileName = $"{pathId}_{DBFileName}";
+            Guid pathId = appMgmtService.ConfigurePreConditionsForPath(path);
+            var fileName = $"{pathId}_{DBFileName}.db";
             var connectionString = Path.Combine(Directory.GetCurrentDirectory(), "db", fileName);
             context = new FileManagerDbContext(connectionString);
             if (!DbExists())
@@ -44,8 +42,15 @@ namespace VideoManagement.Business
 
         public string[] GetAllLocalFiles()
         {
-            string[] files = Directory.GetFiles(DirectoryPath, $"*{FilesToConsider}*", SearchOption.AllDirectories);
-            return files;
+            List<string> files = new List<string>();
+            var supportedExtensions = appMgmtService.GetSupportedFileExtensions();
+            foreach (var extension in supportedExtensions)
+            {
+                string[] localFiles = Directory.GetFiles(DirectoryPath, $"*{extension.Format}*", SearchOption.AllDirectories);
+                files.AddRange(localFiles);
+            }
+            
+            return files.ToArray();
         }
 
         private void Setup()

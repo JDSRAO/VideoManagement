@@ -30,7 +30,7 @@ namespace VideoManagement.UI.WPF
         public PlayWindow(Video video)
         {
             InitializeComponent();
-            videoMgmtService = new VideoMgmtService(App.Path, App.Exntension);
+            videoMgmtService = new VideoMgmtService(App.Path);
             Video = video;
         }
 
