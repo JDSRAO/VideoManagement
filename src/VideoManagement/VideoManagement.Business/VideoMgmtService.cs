@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using VideoManagement.DataAccess.SQLite;
-using VideoManagement.Models;
+using VideoManagement.Models.Tables;
 
 namespace VideoManagement.Business
 {

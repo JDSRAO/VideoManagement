@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VideoManagement.Models
+namespace VideoManagement.Models.Tables
 {
-    public class Artist : BaseModel
+    public class Tag : BaseModel
     {
         public string Name { get; set; }
     }

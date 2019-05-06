@@ -165,11 +165,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\RecentPathsViewModel.cs" />
+    <Compile Include="ViewModels\VideosViewModel.cs" />
+    <Compile Include="Views\RecentPathsView.xaml.cs">
+      <DependentUpon>RecentPathsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VideosView.xaml.cs">
+      <DependentUpon>VideosView.xaml</DependentUpon>
+    </Compile>
     <Page Include="Images\Icons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Styles\ApplicationStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -177,18 +189,31 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Commands\GetVideos.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowModel.cs" />
+    <Compile Include="ViewModels\PlayWindowModel.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Play.xaml">
+    <Page Include="Views\PlayWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RecentPathsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VideosView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Play.xaml.cs">
-      <DependentUpon>Play.xaml</DependentUpon>
+    <Compile Include="Views\PlayWindow.xaml.cs">
+      <DependentUpon>PlayWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -242,9 +267,20 @@
     <Resource Include="Images\icons8-stop-32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon.png" />
+    <Folder Include="Controls\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-heart-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-update-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons8-copy-to-clipboard-32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

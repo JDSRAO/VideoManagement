@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VideoManagement.Models
+namespace VideoManagement.Models.Tables
 {
-    public class Tag : BaseModel
+    public class Category : BaseModel
     {
         public string Name { get; set; }
     }

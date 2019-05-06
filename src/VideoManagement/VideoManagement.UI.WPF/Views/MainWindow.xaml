@@ -1,0 +1,73 @@
+﻿<Window x:Class="VideoManagement.UI.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VideoManagement.UI.WPF"
+        xmlns:views="clr-namespace:VideoManagement.UI.WPF.Views"
+        mc:Ignorable="d"
+        Title="Video Manager" Height="700" Width="1000" MinWidth="1000" MinHeight="600" Icon="{StaticResource appIcon}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0">
+            <Menu>
+                <MenuItem Header="File">
+                    <MenuItem Header="Open"/>
+                    <Separator/>
+                    <MenuItem Header="Exit"/>
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="About Video Manager"/>
+                </MenuItem>
+            </Menu>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <ToolBar>
+                <Button x:Name="loadButton" Click="LoadButton_Click" ToolTip="Open folder" Style="{DynamicResource IconButtonStyle}">
+                    <Image Source="{StaticResource folderOpenedIcon}"/>
+                </Button>
+            </ToolBar>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <TabControl x:Name="tabs" Height="Auto" Width="Auto">
+                <TabItem Header="Home">
+                    <Grid Height="669">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <GroupBox Header="Recent Paths">
+                                <ScrollViewer>
+                                    <views:RecentPathsView MouseDoubleClick="RecentPathsView_MouseDoubleClick"></views:RecentPathsView>
+                                </ScrollViewer>
+                            </GroupBox>
+                        </Grid>
+
+                        <!--<StatusBar HorizontalAlignment="Left" Height="20" Margin="0" Grid.Row="4" VerticalAlignment="Top"/>-->
+
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Configuration">
+                </TabItem>
+            </TabControl>
+        </Grid>
+        
+    </Grid>
+    
+</Window>

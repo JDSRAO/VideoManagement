@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="VideoManagement.UI.WPF.Views.VideosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VideoManagement.UI.WPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".8*"/>
+            <ColumnDefinition Width=".2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".8*"/>
+                    <ColumnDefinition Width=".2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <GroupBox Header="Details">
+                        <StackPanel Width="Auto">
+                            <TextBlock x:Name="name" Text="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay, StringFormat= Name : {0} }"></TextBlock>
+                            <TextBlock x:Name="path" Text="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay, StringFormat= Path : {0} }"></TextBlock>
+                            <TextBlock x:Name="views" Text="{Binding ElementName=Items, Path=SelectedItem.Views, Mode=OneWay, StringFormat=Views : {0} }"></TextBlock>
+                            <Button Style="{StaticResource IconButtonStyle}">
+                                <Image Source="{StaticResource updateIcon}"/>
+                            </Button>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="Auto">
+                        <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="130"/>
+                        <Button x:Name="searchButton"  ToolTip="Search files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
+                            <Image Source="{StaticResource searchIcon}"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <ListBox x:Name="Items" ItemsSource="{Binding Videos}" MouseDoubleClick="Items_MouseDoubleClick" SelectedItem="{Binding SelectedVideo}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="Auto" Orientation="Horizontal">
+                            <StackPanel>
+                                <ToggleButton MinWidth="100" MinHeight="100" MaxHeight="100" MaxWidth="100" >
+                                    <ContentControl Content="{StaticResource searchIcon}"  />
+                                </ToggleButton>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label Content="{Binding Name}"></Label>
+                                <Label Content="{Binding Views}"></Label>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Button Style="{StaticResource IconButtonStyle}" ToolTip="Copy file path">
+                                    <Image Source="{StaticResource copyIcon}"/>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <!--<GroupBox Header="Details">
+                <StackPanel Width="Auto">
+                    <TextBlock x:Name="name" Text="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay, StringFormat= Name : {0} }"></TextBlock>
+                    <TextBlock x:Name="path" Text="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay, StringFormat= Path : {0} }"></TextBlock>
+                    <TextBlock x:Name="views" Text="{Binding ElementName=Items, Path=SelectedItem.Views, Mode=OneWay, StringFormat=Views : {0} }"></TextBlock>
+                    <Button Style="{StaticResource IconButtonStyle}">
+                        <Image Source="{StaticResource updateIcon}"/>
+                    </Button>
+                </StackPanel>
+            </GroupBox>-->
+        </Grid>
+        
+    </Grid>
+    
+</UserControl>

@@ -13,21 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using VideoManagement.Business;
-using VideoManagement.Models;
+using VideoManagement.Models.Tables;
 
 namespace VideoManagement.UI.WPF
 {
     /// <summary>
     /// Interaction logic for Play.xaml
     /// </summary>
-    public partial class Play : Window
+    public partial class PlayWindow : Window
     {
         private VideoMgmtService videoMgmtService { get; }
         private Video Video { get; }
 
         private DispatcherTimer timer;
 
-        public Play(Video video)
+        public PlayWindow(Video video)
         {
             InitializeComponent();
             videoMgmtService = new VideoMgmtService(App.Path, App.Exntension);
