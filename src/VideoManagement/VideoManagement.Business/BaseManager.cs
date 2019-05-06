@@ -61,7 +61,9 @@ namespace VideoManagement.Business
             {
                 var video = new Video()
                 {
-                    Path = file
+                    Name = Path.GetFileName(file),
+                    Path = file,
+                    CreatedOn = File.GetCreationTime(file)
                 };
                 var category = new Category()
                 {

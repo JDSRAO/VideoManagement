@@ -6,7 +6,7 @@ namespace VideoManagement.Models.Tables
 {
     public class Video : BaseModel
     {
-        public string Name => System.IO.Path.GetFileName(Path);
+        public string Name { get; set; }
 
         public string Path { get; set; }
 
@@ -14,7 +14,7 @@ namespace VideoManagement.Models.Tables
 
         public List<Tag> Tags { get; set; }
 
-        public DateTime CreatedOn => File.GetCreationTime(Path);
+        public DateTime CreatedOn { get; set; }
 
         public DateTime? LastAccessTime { get; set; }
 
