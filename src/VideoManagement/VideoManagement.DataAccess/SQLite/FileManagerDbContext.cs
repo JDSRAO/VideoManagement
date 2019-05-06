@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using VideoManagement.Models;
+using VideoManagement.Models.Tables;
 
 namespace VideoManagement.DataAccess.SQLite
 {

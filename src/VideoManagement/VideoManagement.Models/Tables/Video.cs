@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace VideoManagement.Models
+namespace VideoManagement.Models.Tables
 {
     public class Video : BaseModel
     {
