@@ -26,11 +26,11 @@ namespace VideoManagement.UI.WPF.Views
             InitializeComponent();
         }
 
-        public event EventHandler<Video> ItemSelected;
+        public event EventHandler<AppFile> ItemSelected;
 
         private void Items_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = Items.SelectedItem as Video;
+            var selectedItem = Items.SelectedItem as AppFile;
             ItemSelected?.Invoke(this, selectedItem);
         }
     }

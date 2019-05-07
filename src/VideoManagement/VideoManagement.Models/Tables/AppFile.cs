@@ -4,7 +4,7 @@ using System.IO;
 
 namespace VideoManagement.Models.Tables
 {
-    public class Video : BaseModel
+    public class AppFile : BaseModel
     {
         public string Name { get; set; }
 
@@ -32,7 +32,7 @@ namespace VideoManagement.Models.Tables
             return parts[parts.Length - 2];
         }
 
-        public Video()
+        public AppFile()
         {
             Categories = new List<Category>();
             Tags = new List<Tag>();

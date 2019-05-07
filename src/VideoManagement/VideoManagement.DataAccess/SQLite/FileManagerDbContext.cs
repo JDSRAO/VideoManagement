@@ -10,7 +10,7 @@ namespace VideoManagement.DataAccess.SQLite
     {
         public string ConnectionString { get; }
 
-        public DbSet<Video> Videos { get; set; }
+        public DbSet<AppFile> Files { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Artist> Artists { get; set; }

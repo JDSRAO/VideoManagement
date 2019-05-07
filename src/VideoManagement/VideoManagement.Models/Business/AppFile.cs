@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VideoManagement.Models.Business
 {
-    public class Video : BaseModel
+    public class AppFile : BaseModel
     {
         public string Name
         {

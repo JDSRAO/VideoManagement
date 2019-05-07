@@ -23,11 +23,11 @@ namespace VideoManagement.UI.WPF
     public partial class PlayWindow : Window
     {
         private VideoMgmtService videoMgmtService { get; }
-        private Video Video { get; }
+        private AppFile Video { get; }
 
         private DispatcherTimer timer;
 
-        public PlayWindow(Video video)
+        public PlayWindow(AppFile video)
         {
             InitializeComponent();
             videoMgmtService = new VideoMgmtService(App.Path);

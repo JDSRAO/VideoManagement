@@ -65,8 +65,8 @@ namespace VideoManagement.Business
 
         public FileType GetFileType(string fileNameWithExtension)
         {
-            var extension = Path.GetExtension(fileNameWithExtension);
-            return dBContext.FileExtensions.Where(x => x.Format.Equals(extension)).FirstOrDefault().Type;
+            var extension = Path.GetExtension(fileNameWithExtension).ToLower();
+            return dBContext.FileExtensions.Where(x => x.Format.ToLower().Equals(extension)).FirstOrDefault().Type;
         }
     }
 }

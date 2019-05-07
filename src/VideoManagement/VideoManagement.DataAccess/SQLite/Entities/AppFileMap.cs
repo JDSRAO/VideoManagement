@@ -7,9 +7,9 @@ using VideoManagement.Models.Tables;
 
 namespace VideoManagement.DataAccess.SQLite.Entities
 {
-    public class VideoMap : IEntityTypeConfiguration<Video>
+    public class AppFileMap : IEntityTypeConfiguration<AppFile>
     {
-        public void Configure(EntityTypeBuilder<Video> builder)
+        public void Configure(EntityTypeBuilder<AppFile> builder)
         {
             builder.HasKey(x => x.ID);
 
@@ -28,7 +28,7 @@ namespace VideoManagement.DataAccess.SQLite.Entities
             builder.HasIndex(x => x.Categories);
             builder.HasIndex(x => x.Tags);
 
-            builder.ToTable("Videos");
+            builder.ToTable("Files");
         }
     }
 }

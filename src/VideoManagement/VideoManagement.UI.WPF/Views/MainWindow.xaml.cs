@@ -69,7 +69,7 @@ namespace VideoManagement.UI.WPF
             //RefreshPlaylist(query);
         }
 
-        private void View_ItemSelected(object sender, Video e)
+        private void View_ItemSelected(object sender, AppFile e)
         {
             var selectedItem = e;
             AddEditProperties();
