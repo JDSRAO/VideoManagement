@@ -24,6 +24,10 @@ namespace VideoManagement.Models.Tables
 
         public bool Favourite { get; set; }
 
+        public bool IsVideo { get; set; }
+
+        public string ThumbnailPath { get; set; }
+
         public string GetDefaultCategory()
         {
             var parts = Path.Split('\\');

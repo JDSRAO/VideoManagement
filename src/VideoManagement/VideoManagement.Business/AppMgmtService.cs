@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using VideoManagement.DataAccess.SQLite.Application;
@@ -60,6 +61,12 @@ namespace VideoManagement.Business
         public List<FileExtensions> GetSupportedFileExtensions()
         {
             return dBContext.FileExtensions.ToList();
+        }
+
+        public FileType GetFileType(string fileNameWithExtension)
+        {
+            var extension = Path.GetExtension(fileNameWithExtension);
+            return dBContext.FileExtensions.Where(x => x.Format.Equals(extension)).FirstOrDefault().Type;
         }
     }
 }

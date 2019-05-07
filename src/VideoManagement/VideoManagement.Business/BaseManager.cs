@@ -59,11 +59,16 @@ namespace VideoManagement.Business
             var videos = new List<Video>();
             foreach (var file in files)
             {
+                var fileName = Path.GetFileName(file);
+                var isVideo = (appMgmtService.GetFileType(fileName) == FileType.Video ? true : false);
+                var thumbNailPath = string.Empty;
                 var video = new Video()
                 {
-                    Name = Path.GetFileName(file),
+                    Name = fileName,
                     Path = file,
-                    CreatedOn = File.GetCreationTime(file)
+                    CreatedOn = File.GetCreationTime(file),
+                    IsVideo = isVideo,
+                    ThumbnailPath = thumbNailPath
                 };
                 var category = new Category()
                 {
