@@ -24,9 +24,7 @@ namespace VideoManagement.Models.Tables
 
         public bool Favourite { get; set; }
 
-        public bool IsVideo { get; set; }
-
-        public string ThumbnailPath { get; set; }
+        public FileType Type { get; set; }
 
         public string GetDefaultCategory()
         {
