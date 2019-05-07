@@ -24,30 +24,45 @@
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".8*"/>
-                    <ColumnDefinition Width=".2*"/>
+                    <ColumnDefinition Width=".9*"/>
+                    <ColumnDefinition Width=".1*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Row="0" Grid.Column="0">
                     <GroupBox Header="Details">
-                        <StackPanel Width="Auto">
-                            <TextBlock x:Name="name" Text="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay, StringFormat= Name : {0} }"></TextBlock>
-                            <TextBlock x:Name="path" Text="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay, StringFormat= Path : {0} }"></TextBlock>
-                            <TextBlock x:Name="views" Text="{Binding ElementName=Items, Path=SelectedItem.Views, Mode=OneWay, StringFormat=Views : {0} }"></TextBlock>
-                            <Button Style="{StaticResource IconButtonStyle}">
-                                <Image Source="{StaticResource updateIcon}"/>
-                            </Button>
+                        <StackPanel Orientation="Horizontal">
+                            <MediaElement  Name="thumbNail" 
+                                           SpeedRatio="20"
+                                           ScrubbingEnabled="True" 
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Stretch="Uniform"
+                                           Volume="0"
+                                           Source="{Binding ElementName=Items, Path=SelectedItem.Path}"
+                                           LoadedBehavior="Play"
+                                           MinHeight="300" 
+                                           MinWidth="600"
+                                           MaxHeight="300" 
+                                           MaxWidth="600"/>
+                            <StackPanel Width="Auto">
+                                <TextBlock x:Name="name" Text="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay, StringFormat= Name : {0} }"></TextBlock>
+                                <TextBlock x:Name="path" Text="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay, StringFormat= Path : {0} }"></TextBlock>
+                                <TextBlock x:Name="views" Text="{Binding ElementName=Items, Path=SelectedItem.Views, Mode=OneWay, StringFormat=Views : {0} }"></TextBlock>
+                                <Button Style="{StaticResource IconButtonStyle}">
+                                    <Image Source="{StaticResource updateIcon}"/>
+                                </Button>
+                            </StackPanel>
                         </StackPanel>
                     </GroupBox>
                 </Grid>
 
                 <Grid Grid.Row="0" Grid.Column="1">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="Auto">
-                        <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="Search..." VerticalAlignment="Center" Width="130"/>
+                    <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="Auto">
+                        <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap"  Text="Search..." VerticalAlignment="Center" Width="130"/>
                         <Button x:Name="searchButton"  ToolTip="Search files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
                             <Image Source="{StaticResource searchIcon}"/>
                         </Button>
-                    </StackPanel>
+                    </StackPanel>-->
                 </Grid>
             </Grid>
             
@@ -57,11 +72,14 @@
             <ListBox x:Name="Items" ItemsSource="{Binding Videos}" MouseDoubleClick="Items_MouseDoubleClick" SelectedItem="{Binding SelectedVideo}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Width="Auto" Orientation="Horizontal">
+                        <StackPanel 
+                            x:Name="VideoItem"
+                            Width="Auto" Orientation="Horizontal">
                             <StackPanel>
-                                <ToggleButton MinWidth="100" MinHeight="100" MaxHeight="100" MaxWidth="100" >
-                                    <ContentControl Content="{StaticResource searchIcon}"  />
-                                </ToggleButton>
+                                <Image 
+                                    MaxWidth="50"
+                                    MaxHeight="50"
+                                    Source="{StaticResource heartIcon}" />
                             </StackPanel>
                             <StackPanel>
                                 <Label Content="{Binding Name}"></Label>
