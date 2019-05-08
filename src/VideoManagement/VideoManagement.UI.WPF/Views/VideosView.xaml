@@ -69,31 +69,33 @@
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-            <ListBox x:Name="Items" ItemsSource="{Binding Videos}" MouseDoubleClick="Items_MouseDoubleClick" SelectedItem="{Binding SelectedVideo}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel 
+            <GroupBox Header="Files">
+                <ListBox x:Name="Items" ItemsSource="{Binding Videos}" MouseDoubleClick="Items_MouseDoubleClick" SelectedItem="{Binding SelectedVideo}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel 
                             x:Name="VideoItem"
                             Width="Auto" Orientation="Horizontal">
-                            <StackPanel>
-                                <Image 
+                                <StackPanel>
+                                    <Image 
                                     MaxWidth="50"
                                     MaxHeight="50"
                                     Source="{Binding Converter={StaticResource FileTypeToIconConvertor} }" />
+                                </StackPanel>
+                                <StackPanel>
+                                    <Label Content="{Binding Name}"></Label>
+                                    <Label Content="{Binding Views}"></Label>
+                                </StackPanel>
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button Style="{StaticResource IconButtonStyle}" ToolTip="Copy file path">
+                                        <Image Source="{StaticResource copyIcon}"/>
+                                    </Button>
+                                </StackPanel>
                             </StackPanel>
-                            <StackPanel>
-                                <Label Content="{Binding Name}"></Label>
-                                <Label Content="{Binding Views}"></Label>
-                            </StackPanel>
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Button Style="{StaticResource IconButtonStyle}" ToolTip="Copy file path">
-                                    <Image Source="{StaticResource copyIcon}"/>
-                                </Button>
-                            </StackPanel>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </GroupBox>
 
         </Grid>
 
