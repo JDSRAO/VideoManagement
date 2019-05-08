@@ -9,6 +9,5 @@ namespace VideoManagement.UI.WPF
     public class AppProperties
     {
         public const string Path = "path";
-        public const string Extension = "extension";
     }
 }

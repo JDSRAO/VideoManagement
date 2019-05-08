@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VideoManagement.Models.Tables;
+using VideoManagement.UI.WPF.ViewModels;
 
 namespace VideoManagement.UI.WPF.Views
 {
@@ -21,17 +22,44 @@ namespace VideoManagement.UI.WPF.Views
     /// </summary>
     public partial class VideosView : UserControl
     {
-        public VideosView()
+        private string currentPath { get; }
+
+        private AppFile currentlySelectedItem { get; set; }
+
+        public VideosView(string path)
         {
             InitializeComponent();
+            currentPath = path;
+            RefreshPlaylist();
         }
-
-        public event EventHandler<AppFile> ItemSelected;
 
         private void Items_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedItem = Items.SelectedItem as AppFile;
-            ItemSelected?.Invoke(this, selectedItem);
+            currentlySelectedItem = Items.SelectedItem as AppFile;
+            AddEditProperties();
+            PlayWindow playWindow = new PlayWindow(currentlySelectedItem);
+            playWindow.Loaded += PlayWindow_Loaded;
+            playWindow.Show();
+        }
+
+        private void PlayWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshPlaylist();
+        }
+
+        private void AddEditProperties()
+        {
+            Application.Current.Properties.Remove(AppProperties.Path);
+            Application.Current.Properties.Add(AppProperties.Path, currentPath);
+        }
+
+        private void RefreshPlaylist()
+        {
+            DataContext = new VideosViewModel(currentPath);
+            if (currentlySelectedItem != null)
+            {
+                Items.SelectedItem = currentlySelectedItem;
+            }
         }
     }
 }
