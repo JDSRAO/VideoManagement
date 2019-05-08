@@ -14,16 +14,16 @@ namespace VideoManagement.Business
         {
         }
 
-        public List<Video> Get(string query = null)
+        public List<AppFile> Get(string query = null)
         {
             if (string.IsNullOrEmpty(query))
             {
-                return context.Videos.ToList();
+                return context.Files.ToList();
             }
             else
             {
                 query = query.ToLower();
-                return context.Videos.Where(x => x.Name.ToLower().Contains(query)
+                return context.Files.Where(x => x.Name.ToLower().Contains(query)
                 || x.Tags.Count(a => a.Name.ToLower().Contains(query)) > 1
                 || x.Categories.Count(a => a.Name.ToLower().Contains(query)) > 1
                 || x.Artists.Count(a => a.Name.ToLower().Contains(query)) > 1)
@@ -31,19 +31,19 @@ namespace VideoManagement.Business
             }
         }
 
-        public List<Video> Get(Func<Video, bool> predicate)
+        public List<AppFile> Get(Func<AppFile, bool> predicate)
         {
-            return context.Videos.Where(predicate).ToList();
+            return context.Files.Where(predicate).ToList();
         }
 
-        public Guid Add(Video video)
+        public Guid Add(AppFile video)
         {
-            var newVideo = context.Videos.Add(video);
+            var newVideo = context.Files.Add(video);
             context.SaveChanges();
             return newVideo.Entity.ID;
         }
 
-        public void Update(Video video)
+        public void Update(AppFile video)
         {
             //var videoToUpdate = context.Videos.Where(x => x.ID == video.ID).FirstOrDefault();
             //var flags = BindingFlags.Public | BindingFlags.Instance;
@@ -58,18 +58,18 @@ namespace VideoManagement.Business
             //    }
             //}
 
-            context.Videos.Update(video);
+            context.Files.Update(video);
             context.SaveChanges();
         }
 
         public void Delete(Guid id)
         {
-            var video = context.Videos.Where(x => x.ID == id).FirstOrDefault();
-            context.Videos.Remove(video);
+            var video = context.Files.Where(x => x.ID == id).FirstOrDefault();
+            context.Files.Remove(video);
             context.SaveChanges();
         }
 
-        public List<Video> Search(string query)
+        public List<AppFile> Search(string query)
         {
             return null;
         }

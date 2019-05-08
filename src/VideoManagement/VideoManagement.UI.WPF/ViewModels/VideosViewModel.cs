@@ -11,7 +11,7 @@ namespace VideoManagement.UI.WPF.ViewModels
 {
     public class VideosViewModel : BaseViewModel
     {
-        public ObservableCollection<Video> Videos
+        public ObservableCollection<AppFile> Videos
         {
             get => videos;
             set
@@ -21,7 +21,7 @@ namespace VideoManagement.UI.WPF.ViewModels
             }
         }
 
-        public Video SelectedVideo
+        public AppFile SelectedVideo
         {
             get => selectedVideo;
             set
@@ -31,8 +31,8 @@ namespace VideoManagement.UI.WPF.ViewModels
             }
         }
 
-        private ObservableCollection<Video> videos { get; set; }
-        private Video selectedVideo { get; set; }
+        private ObservableCollection<AppFile> videos { get; set; }
+        private AppFile selectedVideo { get; set; }
         private VideoMgmtService videoMgmtService { get; set; }
 
         public VideosViewModel(string path)
@@ -44,7 +44,7 @@ namespace VideoManagement.UI.WPF.ViewModels
         {
             videoMgmtService = new VideoMgmtService(path);
             var videos = videoMgmtService.Get().OrderBy(x => x.Name);
-            this.videos = new ObservableCollection<Video>(videos);
+            this.videos = new ObservableCollection<AppFile>(videos);
         }
     }
 }

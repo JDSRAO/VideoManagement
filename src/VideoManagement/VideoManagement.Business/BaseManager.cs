@@ -56,14 +56,16 @@ namespace VideoManagement.Business
         private void Setup()
         {
             var files = GetAllLocalFiles();
-            var videos = new List<Video>();
+            var videos = new List<AppFile>();
             foreach (var file in files)
             {
-                var video = new Video()
+                var fileName = Path.GetFileName(file);
+                var video = new AppFile()
                 {
-                    Name = Path.GetFileName(file),
+                    Name = fileName,
                     Path = file,
-                    CreatedOn = File.GetCreationTime(file)
+                    CreatedOn = File.GetCreationTime(file),
+                    Type = appMgmtService.GetFileType(fileName)
                 };
                 var category = new Category()
                 {
@@ -73,7 +75,7 @@ namespace VideoManagement.Business
                 videos.Add(video);
             }
 
-            context.Videos.AddRange(videos);
+            context.Files.AddRange(videos);
             var setting = context.Settings.Where(x => x.Key == "DbExists").FirstOrDefault();
             setting.Value = "true";
             context.Settings.Update(setting);

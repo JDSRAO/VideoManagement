@@ -33,7 +33,7 @@ namespace VideoManagement.UI.WPF.ViewModels
             }
         }
 
-        public ObservableCollection<Video> Videos
+        public ObservableCollection<AppFile> Videos
         {
             get => videos;
             set
@@ -44,7 +44,7 @@ namespace VideoManagement.UI.WPF.ViewModels
 
         private string path { get; set; }
         private string searchQuery { get; set; }
-        private ObservableCollection<Video> videos { get; set; }
+        private ObservableCollection<AppFile> videos { get; set; }
 
         string selectedPath = string.Empty;
         string extension = ".mp4";

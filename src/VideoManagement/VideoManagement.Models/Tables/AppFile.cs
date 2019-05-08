@@ -4,7 +4,7 @@ using System.IO;
 
 namespace VideoManagement.Models.Tables
 {
-    public class Video : BaseModel
+    public class AppFile : BaseModel
     {
         public string Name { get; set; }
 
@@ -24,13 +24,15 @@ namespace VideoManagement.Models.Tables
 
         public bool Favourite { get; set; }
 
+        public FileType Type { get; set; }
+
         public string GetDefaultCategory()
         {
             var parts = Path.Split('\\');
             return parts[parts.Length - 2];
         }
 
-        public Video()
+        public AppFile()
         {
             Categories = new List<Category>();
             Tags = new List<Tag>();

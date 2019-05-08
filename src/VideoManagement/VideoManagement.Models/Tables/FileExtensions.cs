@@ -13,9 +13,9 @@ namespace VideoManagement.Models.Tables
         public static List<FileExtensions> DefaultExtensions()
         {
             var defaultExtensions = new Dictionary<string, FileType>();
-            defaultExtensions.Add("avi", FileType.Video);
-            defaultExtensions.Add("mp4", FileType.Video);
-            defaultExtensions.Add("mp3", FileType.Audio);
+            defaultExtensions.Add(".avi", FileType.Video);
+            defaultExtensions.Add(".mp4", FileType.Video);
+            defaultExtensions.Add(".mp3", FileType.Audio);
 
             var fileExtensions = new List<FileExtensions>();
             foreach (var extension in defaultExtensions)

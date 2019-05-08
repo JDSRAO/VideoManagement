@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoManagement.UI.WF", "Vi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoManagement.DataAccess", "VideoManagement.DataAccess\VideoManagement.DataAccess.csproj", "{F71093CF-ABDE-4732-9F12-7D70CD09C192}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoManagement.Models", "VideoManagement.Models\VideoManagement.Models.csproj", "{6729F285-F3FF-412B-BD6C-E8F4A2C83801}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoManagement.Models", "VideoManagement.Models\VideoManagement.Models.csproj", "{6729F285-F3FF-412B-BD6C-E8F4A2C83801}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
