@@ -72,8 +72,14 @@ namespace VideoManagement.UI.WPF
                 Header = System.IO.Path.GetFileName(path),
                 Content = view
             };
+            tab.Loaded += MediaTab_Loaded;
             tabs.Items.Add(tab);
             tabs.SelectedItem = tab;
+        }
+
+        private void MediaTab_Loaded(object sender, RoutedEventArgs e)
+        {
+            RecentPathsView.DataContext = new RecentPathsViewModel();
         }
 
         private void OpenFolder()

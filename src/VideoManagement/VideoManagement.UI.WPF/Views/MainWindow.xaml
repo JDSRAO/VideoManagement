@@ -53,7 +53,7 @@
                         <Grid Grid.Row="0">
                             <GroupBox Header="Recent Paths">
                                 <ScrollViewer>
-                                    <views:RecentPathsView MouseDoubleClick="RecentPathsView_MouseDoubleClick"></views:RecentPathsView>
+                                    <views:RecentPathsView x:Name="RecentPathsView" MouseDoubleClick="RecentPathsView_MouseDoubleClick"></views:RecentPathsView>
                                 </ScrollViewer>
                             </GroupBox>
                         </Grid>
