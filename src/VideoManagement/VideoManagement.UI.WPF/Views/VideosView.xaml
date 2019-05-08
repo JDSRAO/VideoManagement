@@ -79,7 +79,7 @@
                                 <Image 
                                     MaxWidth="50"
                                     MaxHeight="50"
-                                    Source="{StaticResource heartIcon}" />
+                                    Source="{Binding Converter={StaticResource FileTypeToIconConvertor} }" />
                             </StackPanel>
                             <StackPanel>
                                 <Label Content="{Binding Name}"></Label>
