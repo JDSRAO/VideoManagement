@@ -27,7 +27,7 @@ namespace VideoManagement.UI.WPF.Convertors
                     icon = Application.Current.FindResource("videoIcon") as BitmapImage;
                     break;
                 default:
-                    icon = Application.Current.FindResource("heartIcon") as BitmapImage;
+                    icon = Application.Current.FindResource("unknownIcon") as BitmapImage;
                     break;
             }
 

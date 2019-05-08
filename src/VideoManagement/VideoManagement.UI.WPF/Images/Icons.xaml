@@ -16,6 +16,7 @@
     <BitmapImage x:Key="updateIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-update-32.png"/>
     <BitmapImage x:Key="videoIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-documentary-32.png"/>
     <BitmapImage x:Key="musicIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-musical-notes-32.png"/>
+    <BitmapImage x:Key="unknownIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-puzzled-32.png"/>
 
     <BitmapImage x:Key="folderOpenedIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-opened-folder-32.png"/>
     <BitmapImage x:Key="folderSearchIcon" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="/VideoManagement.UI.WPF;component/Images/icons8-search-folder-32.png"/>
