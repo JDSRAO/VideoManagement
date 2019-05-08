@@ -37,17 +37,12 @@ namespace VideoManagement.UI.WPF
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            using (var dialog = new Forms.FolderBrowserDialog())
-            {
-                Forms.DialogResult result = dialog.ShowDialog();
-                if(!string.IsNullOrEmpty(dialog.SelectedPath))
-                {
-                    path = dialog.SelectedPath;
-                    AddEditProperties();
-                    videoMgmtService = new VideoMgmtService(path);
-                    AddNewTab(path);
-                }
-            }
+            OpenFolder();
+        }
+
+        private void MI_Open_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFolder();
         }
 
         private void AddEditProperties()
@@ -76,10 +71,30 @@ namespace VideoManagement.UI.WPF
             tabs.SelectedItem = tab;
         }
 
+        private void OpenFolder()
+        {
+            using (var dialog = new Forms.FolderBrowserDialog())
+            {
+                Forms.DialogResult result = dialog.ShowDialog();
+                if (!string.IsNullOrEmpty(dialog.SelectedPath))
+                {
+                    path = dialog.SelectedPath;
+                    AddEditProperties();
+                    videoMgmtService = new VideoMgmtService(path);
+                    AddNewTab(path);
+                }
+            }
+        }
+
         private void RefreshPlaylist(string query = null)
         {
             var videos = videoMgmtService.Get(query);
             //Items.ItemsSource = videos.OrderBy(x => x.Name);
+        }
+
+        private void MI_ExitApp_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
