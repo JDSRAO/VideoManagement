@@ -10,6 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -47,7 +48,7 @@
                             <StackPanel Width="Auto">
                                 <TextBlock x:Name="name" Text="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay, StringFormat= Name : {0} }"></TextBlock>
                                 <TextBlock x:Name="path" Text="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay, StringFormat= Path : {0} }"></TextBlock>
-                                <TextBlock x:Name="views" Text="{Binding ElementName=Items, Path=SelectedItem.Views, Mode=OneWay, StringFormat=Views : {0} }"></TextBlock>
+                                <TextBlock x:Name="views" Text="{Binding ElementName=Items, Path=SelectedItem.Views, Mode=OneWay, StringFormat= Views : {0} }"></TextBlock>
                                 <Button Style="{StaticResource IconButtonStyle}">
                                     <Image Source="{StaticResource updateIcon}"/>
                                 </Button>
@@ -99,17 +100,10 @@
 
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="1">
-            <!--<GroupBox Header="Details">
-                <StackPanel Width="Auto">
-                    <TextBlock x:Name="name" Text="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay, StringFormat= Name : {0} }"></TextBlock>
-                    <TextBlock x:Name="path" Text="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay, StringFormat= Path : {0} }"></TextBlock>
-                    <TextBlock x:Name="views" Text="{Binding ElementName=Items, Path=SelectedItem.Views, Mode=OneWay, StringFormat=Views : {0} }"></TextBlock>
-                    <Button Style="{StaticResource IconButtonStyle}">
-                        <Image Source="{StaticResource updateIcon}"/>
-                    </Button>
-                </StackPanel>
-            </GroupBox>-->
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <StatusBar>
+                <Label Content="{Binding ElementName=Items, Path=Items.Count}"/>
+            </StatusBar>
         </Grid>
         
     </Grid>
