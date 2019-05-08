@@ -45,6 +45,11 @@ namespace VideoManagement.UI.WPF
             OpenFolder();
         }
 
+        private void MI_ExitApp_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
         private void AddEditProperties()
         {
             Application.Current.Properties.Remove(AppProperties.Path);
@@ -84,17 +89,6 @@ namespace VideoManagement.UI.WPF
                     AddNewTab(path);
                 }
             }
-        }
-
-        private void RefreshPlaylist(string query = null)
-        {
-            var videos = videoMgmtService.Get(query);
-            //Items.ItemsSource = videos.OrderBy(x => x.Name);
-        }
-
-        private void MI_ExitApp_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }
