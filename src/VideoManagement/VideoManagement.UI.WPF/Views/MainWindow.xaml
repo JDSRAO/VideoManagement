@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:VideoManagement.UI.WPF"
         xmlns:views="clr-namespace:VideoManagement.UI.WPF.Views"
         mc:Ignorable="d"
-        Title="Video Manager" Height="700" Width="1000" MinWidth="1000" MinHeight="600" Icon="{StaticResource appIcon}">
+        Title="Video Manager" Height="700" Width="1000" MinWidth="1000" MinHeight="600" Icon="{StaticResource appIcon}"
+        WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
