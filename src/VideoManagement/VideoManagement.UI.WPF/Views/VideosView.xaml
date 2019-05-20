@@ -86,6 +86,7 @@
                                 <StackPanel>
                                     <Label Content="{Binding Name}"></Label>
                                     <Label Content="{Binding Views}"></Label>
+                                    <Label Content="{Binding Converter={StaticResource FileSizeToTextConvertor} }"></Label>
                                 </StackPanel>
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <Button Style="{StaticResource IconButtonStyle}" ToolTip="Copy file path">
