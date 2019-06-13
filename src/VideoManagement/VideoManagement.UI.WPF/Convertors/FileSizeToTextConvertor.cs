@@ -14,8 +14,7 @@ namespace VideoManagement.UI.WPF.Convertors
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var file = (AppFile)value;
-            var currentSize = file.Size;
+            var currentSize = value.ToString();
             var size = GetFileMetricString(currentSize);
             return $"{size} MB";
         }
@@ -25,10 +24,10 @@ namespace VideoManagement.UI.WPF.Convertors
             throw new NotImplementedException();
         }
 
-        private string GetFileMetricString(double size)
+        private string GetFileMetricString(string size)
         {
             var metricString = string.Empty;
-            var inputString = size.ToString();
+            var inputString = size;
             var pattern = @"{\w+.\w+}";
             Regex regex = new Regex(pattern);
             var textParts = regex.Split(inputString);
