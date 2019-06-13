@@ -21,9 +21,9 @@
         <Grid Grid.Row="0">
             <Menu>
                 <MenuItem Header="File">
-                    <MenuItem Header="Open"/>
+                    <MenuItem Header="Open" x:Name="MI_Open" Click="MI_Open_Click"/>
                     <Separator/>
-                    <MenuItem Header="Exit"/>
+                    <MenuItem Header="Exit" x:Name="MI_ExitApp" Click="MI_ExitApp_Click"/>
                 </MenuItem>
                 <MenuItem Header="Help">
                     <MenuItem Header="About Video Manager"/>
@@ -53,7 +53,7 @@
                         <Grid Grid.Row="0">
                             <GroupBox Header="Recent Paths">
                                 <ScrollViewer>
-                                    <views:RecentPathsView MouseDoubleClick="RecentPathsView_MouseDoubleClick"></views:RecentPathsView>
+                                    <views:RecentPathsView x:Name="RecentPathsView" MouseDoubleClick="RecentPathsView_MouseDoubleClick"></views:RecentPathsView>
                                 </ScrollViewer>
                             </GroupBox>
                         </Grid>

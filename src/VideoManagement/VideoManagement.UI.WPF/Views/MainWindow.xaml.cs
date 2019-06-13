@@ -37,46 +37,23 @@ namespace VideoManagement.UI.WPF
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            using (var dialog = new Forms.FolderBrowserDialog())
-            {
-                Forms.DialogResult result = dialog.ShowDialog();
-                if(!string.IsNullOrEmpty(dialog.SelectedPath))
-                {
-                    path = dialog.SelectedPath;
-                    AddEditProperties();
-                    videoMgmtService = new VideoMgmtService(path);
-                    AddNewTab(path);
-                }
-            }
+            OpenFolder();
+        }
+
+        private void MI_Open_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFolder();
+        }
+
+        private void MI_ExitApp_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         private void AddEditProperties()
         {
             Application.Current.Properties.Remove(AppProperties.Path);
-            Application.Current.Properties.Remove(AppProperties.Extension);
             Application.Current.Properties.Add(AppProperties.Path, path);
-        }
-
-        private void Play_Loaded(object sender, RoutedEventArgs e)
-        {
-            RefreshPlaylist();
-        }
-
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
-        {
-            //var query = searchText.Text;
-            videoMgmtService = new VideoMgmtService(path);
-            //RefreshPlaylist(query);
-        }
-
-        private void View_ItemSelected(object sender, AppFile e)
-        {
-            var selectedItem = e;
-            AddEditProperties();
-            videoMgmtService = new VideoMgmtService(path);
-            PlayWindow play = new PlayWindow(selectedItem);
-            play.Loaded += Play_Loaded;
-            play.Show();
         }
 
         private void RecentPathsView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -89,23 +66,35 @@ namespace VideoManagement.UI.WPF
 
         private void AddNewTab(string path)
         {
-            var dataContext = new VideosViewModel(path);
-            var view = new VideosView();
-            view.ItemSelected += View_ItemSelected;
-            view.DataContext = dataContext;
+            var view = new VideosView(path);
             var tab = new TabItem()
             {
                 Header = System.IO.Path.GetFileName(path),
                 Content = view
             };
+            tab.Loaded += MediaTab_Loaded;
             tabs.Items.Add(tab);
             tabs.SelectedItem = tab;
         }
 
-        private void RefreshPlaylist(string query = null)
+        private void MediaTab_Loaded(object sender, RoutedEventArgs e)
         {
-            var videos = videoMgmtService.Get(query);
-            //Items.ItemsSource = videos.OrderBy(x => x.Name);
+            RecentPathsView.DataContext = new RecentPathsViewModel();
+        }
+
+        private void OpenFolder()
+        {
+            using (var dialog = new Forms.FolderBrowserDialog())
+            {
+                Forms.DialogResult result = dialog.ShowDialog();
+                if (!string.IsNullOrEmpty(dialog.SelectedPath))
+                {
+                    path = dialog.SelectedPath;
+                    AddEditProperties();
+                    videoMgmtService = new VideoMgmtService(path);
+                    AddNewTab(path);
+                }
+            }
         }
     }
 }
