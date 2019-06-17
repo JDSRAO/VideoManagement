@@ -45,7 +45,8 @@
                 <TabItem Header="Home">
                     <Grid Height="Auto">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height=".98*"/>
+                            <RowDefinition Height=".02*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -59,7 +60,10 @@
                             </GroupBox>
                         </Grid>
 
-                        <!--<StatusBar HorizontalAlignment="Left" Height="20" Margin="0" Grid.Row="4" VerticalAlignment="Top"/>-->
+                        <ProgressBar Grid.Row="1" 
+                                     Visibility="Hidden"
+                                     IsIndeterminate="True"
+                                     x:Name="setupProgress"/>
 
                     </Grid>
                 </TabItem>

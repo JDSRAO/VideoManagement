@@ -35,14 +35,14 @@ namespace VideoManagement.UI.WPF
             
         }
 
-        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        private async void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFolder();
+            await OpenFolder();
         }
 
-        private void MI_Open_Click(object sender, RoutedEventArgs e)
+        private async void MI_Open_Click(object sender, RoutedEventArgs e)
         {
-            OpenFolder();
+            await OpenFolder();
         }
 
         private void MI_ExitApp_Click(object sender, RoutedEventArgs e)
@@ -82,7 +82,7 @@ namespace VideoManagement.UI.WPF
             RecentPathsView.DataContext = new RecentPathsViewModel();
         }
 
-        private void OpenFolder()
+        private async Task OpenFolder()
         {
             using (var dialog = new Forms.FolderBrowserDialog())
             {
@@ -92,6 +92,9 @@ namespace VideoManagement.UI.WPF
                     path = dialog.SelectedPath;
                     AddEditProperties();
                     videoMgmtService = new VideoMgmtService(path);
+                    setupProgress.Visibility = Visibility.Visible;
+                    await videoMgmtService.PreConditions();
+                    setupProgress.Visibility = Visibility.Hidden;
                     AddNewTab(path);
                 }
             }

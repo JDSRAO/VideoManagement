@@ -25,12 +25,13 @@ namespace VideoManagement.Business
             var fileName = $"{pathId}_{DBFileName}.db";
             var connectionString = Path.Combine(Directory.GetCurrentDirectory(), "db", fileName);
             context = new FileManagerDbContext(connectionString);
+        }
+
+        public async Task PreConditions()
+        {
             if (!DbExists())
             {
-                Task.Run(async () => 
-                {
-                    await Setup();
-                });
+                await Setup();
             }
         }
 
@@ -57,7 +58,7 @@ namespace VideoManagement.Business
             return files.ToArray();
         }
 
-        private async Task Setup()
+        public async Task Setup()
         {
             var files = GetAllLocalFiles();
             var videos = new List<AppFile>();
