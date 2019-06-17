@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using VideoManagement.DataAccess.SQLite;
 using VideoManagement.Models.Tables;
 
@@ -26,7 +27,10 @@ namespace VideoManagement.Business
             context = new FileManagerDbContext(connectionString);
             if (!DbExists())
             {
-                Setup();
+                Task.Run(async () => 
+                {
+                    await Setup();
+                });
             }
         }
 
@@ -53,19 +57,21 @@ namespace VideoManagement.Business
             return files.ToArray();
         }
 
-        private void Setup()
+        private async Task Setup()
         {
             var files = GetAllLocalFiles();
             var videos = new List<AppFile>();
             foreach (var file in files)
             {
-                var fileName = Path.GetFileName(file);
+                var fileInfo = new FileInfo(file);
                 var video = new AppFile()
                 {
-                    Name = fileName,
+                    Name = fileInfo.Name,
                     Path = file,
-                    CreatedOn = File.GetCreationTime(file),
-                    Type = appMgmtService.GetFileType(fileName)
+                    CreatedOn = fileInfo.CreationTime,
+                    Type = appMgmtService.GetFileType(fileInfo.Name),
+                    Duration = await GetMediaDuration(file),
+                    Size = ( (fileInfo.Length / 1000) / 1000)
                 };
                 var category = new Category()
                 {
@@ -80,6 +86,21 @@ namespace VideoManagement.Business
             setting.Value = "true";
             context.Settings.Update(setting);
             context.SaveChanges();
+        }
+
+        public async Task<TimeSpan> GetMediaDuration(string filePath)
+        {
+            return await Task.Run(() =>
+            {
+                var inputFile = new MediaToolkit.Model.MediaFile { Filename = @filePath };
+                using (var engine = new MediaToolkit.Engine())
+                {
+                    engine.GetMetadata(inputFile);
+                }
+
+                return inputFile.Metadata.Duration;
+            });
+            
         }
     }
 }

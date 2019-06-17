@@ -3,4 +3,5 @@
                     xmlns:local="clr-namespace:VideoManagement.UI.WPF.Convertors">
 
     <local:FileTypeToIconConvertor x:Key="FileTypeToIconConvertor"/>
+    <local:FileSizeToTextConvertor x:Key="FileSizeToTextConvertor"/>
 </ResourceDictionary>
