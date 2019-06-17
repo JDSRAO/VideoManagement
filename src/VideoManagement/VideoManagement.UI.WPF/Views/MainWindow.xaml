@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:VideoManagement.UI.WPF"
         xmlns:views="clr-namespace:VideoManagement.UI.WPF.Views"
         mc:Ignorable="d"
-        Title="Video Manager" Height="700" Width="1000" MinWidth="1000" MinHeight="600" Icon="{StaticResource appIcon}">
+        Title="Video Manager" Height="700" Width="1000" MinWidth="1000" MinHeight="600" Icon="{StaticResource appIcon}"
+        WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -34,7 +35,7 @@
         <Grid Grid.Row="1">
             <ToolBar>
                 <Button x:Name="loadButton" Click="LoadButton_Click" ToolTip="Open folder" Style="{DynamicResource IconButtonStyle}">
-                    <Image Source="{StaticResource folderOpenedIcon}"/>
+                    <Image Source="{StaticResource folderAddIcon}"/>
                 </Button>
             </ToolBar>
         </Grid>

@@ -26,6 +26,10 @@ namespace VideoManagement.Models.Tables
 
         public FileType Type { get; set; }
 
+        public double Size { get; set; }
+
+        public TimeSpan Duration { get; set; }
+
         public string GetDefaultCategory()
         {
             var parts = Path.Split('\\');
