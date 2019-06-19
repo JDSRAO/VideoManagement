@@ -98,7 +98,8 @@ namespace VideoManagement.Business
             {
                 var localFilesNames = await GetAllLocalFiles();
 
-                var dbMediaFiles = context.Files.ToList();
+                var dbMediaFiles = GetAllMediaFiles().ToList();
+
                 foreach (var mediaFile in dbMediaFiles)
                 {
                     if (localFilesNames.Count(x => x.Equals(mediaFile.Path)) == 0)
@@ -118,7 +119,7 @@ namespace VideoManagement.Business
                         {
                             context.Artists.Remove(artist);
                         }
-                        //context.Files.Remove(mediaFile);
+                        context.Files.Remove(mediaFile);
                     }
                 }
 
@@ -133,6 +134,26 @@ namespace VideoManagement.Business
                 }
 
                 await context.SaveChangesAsync();
+            });
+        }
+
+        public IQueryable<AppFile> GetAllMediaFiles()
+        {
+            return context.Files.Select(x => new AppFile
+            {
+                ID = x.ID,
+                Name = x.Name,
+                Path = x.Path,
+                CreatedOn = x.CreatedOn,
+                LastAccessTime = x.LastAccessTime,
+                Views = x.Views,
+                Favourite = x.Favourite,
+                Type = x.Type,
+                Size = x.Size,
+                Duration = x.Duration,
+                Categories = context.Categories.Where(a => a.AppFileId == x.ID).ToList(),
+                Artists = context.Artists.Where(a => a.AppFileId == x.ID).ToList(),
+                Tags = context.Tags.Where(a => a.AppFileId == x.ID).ToList(),
             });
         }
 

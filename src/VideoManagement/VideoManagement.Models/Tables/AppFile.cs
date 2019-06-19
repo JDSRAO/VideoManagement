@@ -10,9 +10,9 @@ namespace VideoManagement.Models.Tables
 
         public string Path { get; set; }
 
-        public List<Category> Categories { get; set; }
+        public ICollection<Category> Categories { get; set; }
 
-        public List<Tag> Tags { get; set; }
+        public ICollection<Tag> Tags { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
@@ -20,7 +20,7 @@ namespace VideoManagement.Models.Tables
 
         public long Views { get; set; }
 
-        public List<Artist> Artists { get; set; }
+        public ICollection<Artist> Artists { get; set; }
 
         public bool Favourite { get; set; }
 
