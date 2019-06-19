@@ -56,11 +56,13 @@ namespace VideoManagement.UI.WPF
             Application.Current.Properties.Add(AppProperties.Path, path);
         }
 
-        private void RecentPathsView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private async void RecentPathsView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var item = sender as RecentPathsView;
             var recentPath = item.SelectedItem as RecentPath;
             path = recentPath.Path;
+            videoMgmtService = new VideoMgmtService(path);
+            await videoMgmtService.Refresh();
             AddNewTab(recentPath.Path);
         }
 
