@@ -96,13 +96,13 @@ namespace VideoManagement.Business
         {
             await Task.Run(async () =>
             {
-                var localFilesNames = await GetAllLocalFiles();
+                var localFilesNamesWithPath = await GetAllLocalFiles();
 
                 var dbMediaFiles = GetAllMediaFiles().ToList();
 
                 foreach (var mediaFile in dbMediaFiles)
                 {
-                    if (localFilesNames.Count(x => x.Equals(mediaFile.Path)) == 0)
+                    if (localFilesNamesWithPath.Count(x => x.Equals(mediaFile.Path)) == 0)
                     {
                         var categories = mediaFile.Categories;
                         foreach (var category in categories)
@@ -123,12 +123,12 @@ namespace VideoManagement.Business
                     }
                 }
 
-                foreach (var fileName in localFilesNames)
+                foreach (var fileNameWithPath in localFilesNamesWithPath)
                 {
-                    var dbItem = context.Files.Where(x => x.Name.Equals(fileName)).FirstOrDefault();
+                    var dbItem = context.Files.Where(x => x.Path.Equals(fileNameWithPath)).FirstOrDefault();
                     if(dbItem == null)
                     {
-                        var media = await CreateMediaFileWithCategory(fileName);
+                        var media = await CreateMediaFileWithCategory(fileNameWithPath);
                         context.Files.Add(media);
                     }
                 }
