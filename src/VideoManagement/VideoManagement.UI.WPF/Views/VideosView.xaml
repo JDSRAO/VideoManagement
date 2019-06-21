@@ -95,7 +95,11 @@
                                     
                                 </StackPanel>
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Button Style="{StaticResource IconButtonStyle}" ToolTip="Copy file path">
+                                    <Button Style="{StaticResource IconButtonStyle}" 
+                                            x:Name="CopyFilePath"
+                                            Click="CopyFilePath_Click"
+                                            Tag="{Binding Path=Path}"
+                                            ToolTip="Copy file path">
                                         <Image Source="{StaticResource copyIcon}"/>
                                     </Button>
                                 </StackPanel>

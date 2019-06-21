@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VideoManagement.Models.Tables;
+using VideoManagement.UI.WPF.Helpers;
 using VideoManagement.UI.WPF.ViewModels;
 
 namespace VideoManagement.UI.WPF.Views
@@ -36,6 +37,13 @@ namespace VideoManagement.UI.WPF.Views
 
         public RecentPath SelectedItem => selectedItem;
 
-        private RecentPath selectedItem { get; set; }        
+        private RecentPath selectedItem { get; set; }
+
+        private void CopyCurrentPath_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var textToCopy = btn.Tag.ToString();
+            CopyTool.CopyToClipboard(textToCopy);
+        }
     }
 }
