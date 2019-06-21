@@ -18,7 +18,11 @@
                         <Label Content="{Binding Path=Path}"></Label> 
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button Style="{StaticResource IconButtonStyle}" ToolTip="Copy path">
+                        <Button Style="{StaticResource IconButtonStyle}"
+                                x:Name="CopyCurrentPath"
+                                Tag="{Binding Path=Path}"
+                                Click="CopyCurrentPath_Click"
+                                ToolTip="Copy path">
                             <Image Source="{StaticResource copyIcon}"/>
                         </Button>
                     </StackPanel>

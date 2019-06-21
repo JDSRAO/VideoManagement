@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VideoManagement.Models.Tables;
+using VideoManagement.UI.WPF.Helpers;
 using VideoManagement.UI.WPF.ViewModels;
 
 namespace VideoManagement.UI.WPF.Views
@@ -60,6 +61,13 @@ namespace VideoManagement.UI.WPF.Views
             {
                 Items.SelectedItem = currentlySelectedItem;
             }
+        }
+
+        private void CopyFilePath_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var textToCopy = btn.Tag.ToString();
+            CopyTool.CopyToClipboard(textToCopy);
         }
     }
 }

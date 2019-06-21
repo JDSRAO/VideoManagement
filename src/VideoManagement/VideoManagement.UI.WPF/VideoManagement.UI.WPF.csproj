@@ -197,6 +197,7 @@
     <Compile Include="AppConfiguration.cs" />
     <Compile Include="Convertors\FileSizeToTextConvertor.cs" />
     <Compile Include="Convertors\FileTypeToIconConvertor.cs" />
+    <Compile Include="Helpers\CopyTool.cs" />
     <Compile Include="ViewModels\RecentPathsViewModel.cs" />
     <Compile Include="ViewModels\VideosViewModel.cs" />
     <Compile Include="Views\RecentPathsView.xaml.cs">
