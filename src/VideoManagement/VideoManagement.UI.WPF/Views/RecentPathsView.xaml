@@ -13,11 +13,14 @@
                 <DataTemplate>
                     <StackPanel Width="Auto" Orientation="Horizontal">
                         <Image Source="{StaticResource folderOpenedIcon}"></Image>
-                    <StackPanel>
-                        <Label Content="{Binding Path=ID}"></Label>
-                        <Label Content="{Binding Path=Path}"></Label> 
+                    <StackPanel 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <Label Content="{Binding Path=Path}" Style="{StaticResource SubTitle}"></Label> 
                     </StackPanel>
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
                         <Button Style="{StaticResource IconButtonStyle}"
                                 x:Name="CopyCurrentPath"
                                 Tag="{Binding Path=Path}"
