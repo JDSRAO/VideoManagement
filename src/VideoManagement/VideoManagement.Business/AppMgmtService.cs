@@ -68,5 +68,18 @@ namespace VideoManagement.Business
             var extension = Path.GetExtension(fileNameWithExtension).ToLower();
             return dBContext.FileExtensions.Where(x => x.Format.ToLower().Equals(extension)).FirstOrDefault().Type;
         }
+
+        public FileExtensions AddNewFileExtension(string fileExtension, FileType fileType)
+        {
+            var item = new FileExtensions
+            {
+                Format = fileExtension,
+                Type = fileType
+            };
+
+            var dbItem = dBContext.FileExtensions.Add(item);
+            dBContext.SaveChanges();
+            return dbItem.Entity;
+        }
     }
 }
