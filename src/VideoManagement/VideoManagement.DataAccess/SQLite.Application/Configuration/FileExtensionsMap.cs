@@ -14,6 +14,8 @@ namespace VideoManagement.DataAccess.SQLite.Application.Configuration
             builder.HasKey(x => x.ID);
 
             builder.Property(x => x.Format);
+            builder.Property(x => x.Type);
+            builder.Property(x => x.IsEnabled);
 
             builder.ToTable("FileExtensions");
         }

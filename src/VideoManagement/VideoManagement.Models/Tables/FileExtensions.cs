@@ -8,6 +8,7 @@ namespace VideoManagement.Models.Tables
     {
         public string Format { get; set; }
         public FileType Type { get; set; }
+        public bool IsEnabled { get; set; }
 
 
         public static List<FileExtensions> DefaultExtensions()
@@ -24,7 +25,8 @@ namespace VideoManagement.Models.Tables
                 {
                     ID = Guid.NewGuid(),
                     Format = extension.Key,
-                    Type = extension.Value
+                    Type = extension.Value,
+                    IsEnabled = true
                 };
                 fileExtensions.Add(fileExtension);
             }
