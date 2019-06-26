@@ -26,10 +26,10 @@ Help us improve out the application by sending us pull-requests or opening a [Gi
 To use the samples with Git, clone the project repository with `git clone https://github.com/JDSRAO/VideoManagement`
 
 After cloning the respository:
-* To build the samples, open VideoManagement.sln solution file in Visual Studio 2017 and build the solution.
-* Alternatively, open the project directory in command prompt and type ```cmd cd src/VideoManagement.UI.WPF ``` and build with 'dotnet build' or 'msbuild' specifying the target project file.
+* To build the samples, open `VideoManagement.sln` solution file in Visual Studio 2017 and build the solution.
+* Alternatively, open the project directory in command prompt and type ``` cd src/VideoManagement.UI.WPF ``` and build with 'dotnet build' or 'msbuild' specifying the target project file.
 
-The easiest way to use these samples without using Git is to download the zip file containing the current version (by clicking the "Download ZIP" button on the repo page). You can then unzip the entire archive and use the solution in Visual Studio 2017.
+The easiest way to use these samples without using Git is to download the zip file containing the current version. You can then unzip the entire archive and use the solution in Visual Studio 2017.
 
 ## Installation
 Please find below the installation guidelines:
