@@ -106,5 +106,19 @@ namespace VideoManagement.Business
                 throw new KeyNotFoundException("Cannot find file extension");
             }
         }
+
+        public void DeleteExtension(Guid id)
+        {
+            var dbItem = dBContext.FileExtensions.Where(x => x.ID == id).FirstOrDefault();
+            if (dbItem != null)
+            {
+                dBContext.FileExtensions.Remove(dbItem);
+                dBContext.SaveChanges();
+            }
+            else
+            {
+                throw new KeyNotFoundException("Cannot find file extension");
+            }
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace VideoManagement.UI.WPF.Views.Configuration
     {
         public ICommand AddNewExtensionCommand { get; set; }
         public ICommand ToggleExtensionStatusCommand { get; set; }
+        public ICommand DeleteExtensionCommand { get; set; }
 
         public ObservableCollection<FileExtensions> FileExtensions
         {
@@ -68,6 +69,7 @@ namespace VideoManagement.UI.WPF.Views.Configuration
             appMgmtService = new AppMgmtService();
             AddNewExtensionCommand = new RelayCommand(OnAddNewExtension);
             ToggleExtensionStatusCommand = new RelayCommand(OnToggleExtensionStatus);
+            DeleteExtensionCommand = new RelayCommand(OnDeleteExtension);
             Setup();
         }
 
@@ -94,6 +96,13 @@ namespace VideoManagement.UI.WPF.Views.Configuration
         {
             var id = Guid.Parse(obj.ToString());
             appMgmtService.ToggleExtensionStatus(id);
+            Setup();
+        }
+
+        private void OnDeleteExtension(object obj)
+        {
+            var id = Guid.Parse(obj.ToString());
+            appMgmtService.DeleteExtension(id);
             Setup();
         }
 

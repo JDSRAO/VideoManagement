@@ -39,5 +39,13 @@ namespace VideoManagement.UI.WPF.Views.Configuration
             var context = (ConfigurationViewModel)DataContext;
             context.ToggleExtensionStatusCommand.Execute(id);
         }
+
+        private void DeleteExtension_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var id = btn.Tag.ToString();
+            var context = (ConfigurationViewModel)DataContext;
+            context.DeleteExtensionCommand.Execute(id);
+        }
     }
 }
