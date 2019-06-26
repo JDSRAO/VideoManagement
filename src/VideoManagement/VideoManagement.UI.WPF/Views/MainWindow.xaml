@@ -54,7 +54,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Row="0">
-                            <GroupBox Header="Recent Paths">
+                            <GroupBox Header="Scanned Paths">
                                 <ScrollViewer>
                                     <views:RecentPathsView x:Name="RecentPathsView" MouseDoubleClick="RecentPathsView_MouseDoubleClick"></views:RecentPathsView>
                                 </ScrollViewer>
