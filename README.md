@@ -7,11 +7,10 @@ Supported Indexing Properties:
 * Categories
 * Tags
 
- Supported Media Types:
+ Supported Media Types (with option to add other file extentions):
 * Audio (.mp3)
 * Video (.mp4, .avi)
 
-With option to add other file extentions 
 
 ## Help us improve the application
 Help us improve out the application by sending us pull-requests or opening a [GitHub Issue](https://github.com/JDSRAO/VideoManagement/issues)
