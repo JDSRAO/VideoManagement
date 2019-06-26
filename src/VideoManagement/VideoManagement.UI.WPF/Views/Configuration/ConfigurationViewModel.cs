@@ -15,6 +15,7 @@ namespace VideoManagement.UI.WPF.Views.Configuration
     public class ConfigurationViewModel : BaseViewModel
     {
         public ICommand AddNewExtensionCommand { get; set; }
+        public ICommand ToggleExtensionStatusCommand { get; set; }
 
         public ObservableCollection<FileExtensions> FileExtensions
         {
@@ -66,6 +67,7 @@ namespace VideoManagement.UI.WPF.Views.Configuration
         {
             appMgmtService = new AppMgmtService();
             AddNewExtensionCommand = new RelayCommand(OnAddNewExtension);
+            ToggleExtensionStatusCommand = new RelayCommand(OnToggleExtensionStatus);
             Setup();
         }
 
@@ -85,7 +87,14 @@ namespace VideoManagement.UI.WPF.Views.Configuration
         private void OnAddNewExtension(object obj)
         {
             appMgmtService.AddNewFileExtension(extention, filetype);
-            GetExtensions();
+            Setup();
+        }
+
+        private void OnToggleExtensionStatus(object obj)
+        {
+            var id = Guid.Parse(obj.ToString());
+            appMgmtService.ToggleExtensionStatus(id);
+            Setup();
         }
 
         private void SetExtenstions(List<FileExtensions> fileExtensions)

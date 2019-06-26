@@ -36,8 +36,11 @@
                             <Label Grid.Column="0" Grid.Row="0" 
                                    Content="{Binding Format}"/>
                             <CheckBox Grid.Column="1" Grid.Row="0" 
-                                      HorizontalAlignment="Center" 
-                                      VerticalAlignment="Center" 
+                                      x:Name="IsExtensionEnabled"
+                                      HorizontalAlignment="Center"
+                                      Tag="{Binding Path=ID}"
+                                      VerticalAlignment="Center"
+                                      Click="IsExtensionEnabled_Click"
                                       IsChecked="{Binding IsEnabled}"/>
                         </Grid>
                     </DataTemplate>

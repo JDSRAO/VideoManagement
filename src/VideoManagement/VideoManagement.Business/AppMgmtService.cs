@@ -58,9 +58,16 @@ namespace VideoManagement.Business
             return dBContext.RecentPaths.OrderByDescending(x => x.AccessedOn).ToList();
         }
 
-        public List<FileExtensions> GetSupportedFileExtensions()
+        public List<FileExtensions> GetSupportedFileExtensions(Func<FileExtensions, bool> expression = null)
         {
-            return dBContext.FileExtensions.ToList();
+            if(expression != null)
+            {
+                return dBContext.FileExtensions.Where(expression).ToList();
+            }
+            else
+            {
+                return dBContext.FileExtensions.ToList();
+            }
         }
 
         public FileType GetFileType(string fileNameWithExtension)
@@ -85,6 +92,19 @@ namespace VideoManagement.Business
         public List<FileType> GetMediaTypes()
         {
             return dBContext.FileExtensions.Select(x => x.Type).Distinct().ToList();
+        }
+
+        public void ToggleExtensionStatus(Guid id)
+        {
+            var dbItem = dBContext.FileExtensions.Where(x => x.ID == id).FirstOrDefault();
+            if(dbItem != null)
+            {
+                dBContext.SaveChanges();
+            }
+            else
+            {
+                throw new KeyNotFoundException("Cannot find file extension");
+            }
         }
     }
 }

@@ -31,5 +31,13 @@ namespace VideoManagement.UI.WPF.Views.Configuration
             var context = (ConfigurationViewModel)DataContext;
             context.AddNewExtensionCommand.Execute(null);
         }
+
+        private void IsExtensionEnabled_Click(object sender, RoutedEventArgs e)
+        {
+            var cb = sender as CheckBox;
+            var id = cb.Tag.ToString();
+            var context = (ConfigurationViewModel)DataContext;
+            context.ToggleExtensionStatusCommand.Execute(id);
+        }
     }
 }
