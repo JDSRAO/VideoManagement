@@ -58,15 +58,67 @@ namespace VideoManagement.Business
             return dBContext.RecentPaths.OrderByDescending(x => x.AccessedOn).ToList();
         }
 
-        public List<FileExtensions> GetSupportedFileExtensions()
+        public List<FileExtensions> GetSupportedFileExtensions(Func<FileExtensions, bool> expression = null)
         {
-            return dBContext.FileExtensions.ToList();
+            if(expression != null)
+            {
+                return dBContext.FileExtensions.Where(expression).ToList();
+            }
+            else
+            {
+                return dBContext.FileExtensions.ToList();
+            }
         }
 
         public FileType GetFileType(string fileNameWithExtension)
         {
             var extension = Path.GetExtension(fileNameWithExtension).ToLower();
             return dBContext.FileExtensions.Where(x => x.Format.ToLower().Equals(extension)).FirstOrDefault().Type;
+        }
+
+        public FileExtensions AddNewFileExtension(string fileExtension, FileType fileType)
+        {
+            var item = new FileExtensions
+            {
+                Format = fileExtension,
+                Type = fileType
+            };
+
+            var dbItem = dBContext.FileExtensions.Add(item);
+            dBContext.SaveChanges();
+            return dbItem.Entity;
+        }
+
+        public List<FileType> GetMediaTypes()
+        {
+            return dBContext.FileExtensions.Select(x => x.Type).Distinct().ToList();
+        }
+
+        public void ToggleExtensionStatus(Guid id)
+        {
+            var dbItem = dBContext.FileExtensions.Where(x => x.ID == id).FirstOrDefault();
+            if(dbItem != null)
+            {
+                dBContext.SaveChanges();
+            }
+            else
+            {
+                throw new KeyNotFoundException("Cannot find file extension");
+            }
+        }
+
+        public void DeleteExtension(Guid id)
+        {
+            var dbItem = dBContext.FileExtensions.Where(x => x.ID == id).FirstOrDefault();
+            if (dbItem != null)
+            {
+                dBContext.FileExtensions.Remove(dbItem);
+                dBContext.SaveChanges();
+            }
+            else
+            {
+                throw new KeyNotFoundException("Cannot find file extension");
+            }
         }
     }
 }

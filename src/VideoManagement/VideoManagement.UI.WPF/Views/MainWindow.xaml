@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VideoManagement.UI.WPF"
         xmlns:views="clr-namespace:VideoManagement.UI.WPF.Views"
+        xmlns:configView="clr-namespace:VideoManagement.UI.WPF.Views.Configuration"
         mc:Ignorable="d"
         Title="Video Manager" Height="700" Width="1000" MinWidth="1000" MinHeight="600" Icon="{StaticResource appIcon}"
         WindowState="Maximized">
@@ -69,6 +70,7 @@
                 </TabItem>
 
                 <TabItem Header="Configuration">
+                    <configView:ConfigurationView></configView:ConfigurationView>
                 </TabItem>
             </TabControl>
         </Grid>
