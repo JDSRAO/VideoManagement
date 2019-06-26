@@ -13,6 +13,9 @@ Supported Indexing Properties:
 
 With option to add other file extentions 
 
+### Help us improve the application
+Help us improve out the application by sending us pull-requests or opening a [GitHub Issue](https://github.com/JDSRAO/VideoManagement/issues)
+
 ## Table of Contents  
 1. [Installation](#installation)
 2. [Usage](#usage)
@@ -20,6 +23,7 @@ With option to add other file extentions
 
 
 ## Installation
+The application is packaged as a 32 bit executable. The latest executable can be found here
 
 ## Usage
 
