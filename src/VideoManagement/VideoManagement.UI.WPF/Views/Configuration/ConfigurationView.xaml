@@ -10,15 +10,74 @@
         <!--<Label>From config view</Label>-->
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width=".5*"/>
+            <ColumnDefinition Width=".5*"/>
         </Grid.ColumnDefinitions>
 
         <GroupBox Grid.Column="0" Grid.Row="0"
-            Header="Supported File Extension">
-            
+            Header="Supported File Extension(s)">
+            <ListBox x:Name="fileExtension" ItemsSource="{Binding FileExtensions}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".6*"/>
+                                <ColumnDefinition Width=".4*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" 
+                                   Content="{Binding Format}"/>
+                            <CheckBox Grid.Column="1" Grid.Row="0" 
+                                      HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center" 
+                                      IsChecked="{Binding IsEnabled}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </GroupBox>
+
+        <StackPanel Grid.Column="1" Grid.Row="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".5*"/>
+                    <ColumnDefinition Width=".5*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+
+            <GroupBox Grid.Column="0" Grid.Row="0"
+                      Header="New File Extension"
+                      HorizontalAlignment="Left">
+                <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                    <TextBox Text="{Binding Extention}"
+                         Width="150px"/>
+                    <ComboBox ItemsSource="{Binding MediaTypes}"
+                              SelectedItem="{Binding Filetype}"
+                          Width="100px"/>
+                    <Button x:Name="AddExtention"
+                        Click="AddExtention_Click"
+                        Style="{StaticResource IconButtonStyle}"
+                        ToolTip="Add">
+                        <Image Source="{StaticResource folderAddIcon}"/>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        
     </Grid>
 </UserControl>

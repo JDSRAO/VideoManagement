@@ -81,5 +81,10 @@ namespace VideoManagement.Business
             dBContext.SaveChanges();
             return dbItem.Entity;
         }
+
+        public List<FileType> GetMediaTypes()
+        {
+            return dBContext.FileExtensions.Select(x => x.Type).Distinct().ToList();
+        }
     }
 }

@@ -23,6 +23,13 @@ namespace VideoManagement.UI.WPF.Views.Configuration
         public ConfigurationView()
         {
             InitializeComponent();
+            DataContext = new ConfigurationViewModel();
+        }
+
+        private void AddExtention_Click(object sender, RoutedEventArgs e)
+        {
+            var context = (ConfigurationViewModel)DataContext;
+            context.AddNewExtensionCommand.Execute(null);
         }
     }
 }
