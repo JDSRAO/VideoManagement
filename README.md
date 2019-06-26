@@ -23,8 +23,6 @@ With option to add other file extentions
 
 ## Usage
 
-## License
-
 ## Lincense
 Please refer [here](LICENSE) for license information
 
