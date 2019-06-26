@@ -34,7 +34,7 @@ The easiest way to use these samples without using Git is to download the zip fi
 ## Installation
 Please find below the installation guidelines:
 1. Please install dotnet framework 4.6.1 (if you have not already)
-2. Download the .msi installer from https://github.com/JDSRAO/VideoManagement/releases
+2. Download the latest .msi installer from https://github.com/JDSRAO/VideoManagement/releases
 3. Run downloaded installer 
 
 ## Usage
