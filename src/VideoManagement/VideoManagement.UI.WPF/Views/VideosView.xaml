@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VideoManagement.UI.WPF.Views"
+             xmlns:playMediaView="clr-namespace:VideoManagement.UI.WPF.Views.PlayMediaView"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -21,7 +22,7 @@
         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -32,7 +33,7 @@
                 <Grid Grid.Row="0" Grid.Column="0">
                     <GroupBox Header="Details">
                         <StackPanel Orientation="Horizontal">
-                            <MediaElement  Name="thumbNail" 
+                            <!--<MediaElement  Name="thumbNail" 
                                            SpeedRatio="20"
                                            ScrubbingEnabled="True" 
                                            HorizontalAlignment="Center"
@@ -44,7 +45,13 @@
                                            MinHeight="300" 
                                            MinWidth="600"
                                            MaxHeight="300" 
-                                           MaxWidth="600"/>
+                                           MaxWidth="600"/>-->
+                            <playMediaView:PlayMediaView 
+                                MediaPath="{Binding ElementName=Items, Path=SelectedItem.Path}"
+                                MinHeight="450" 
+                                MinWidth="800"
+                                MaxHeight="450" 
+                                MaxWidth="800"/>
                             <StackPanel Width="Auto">
                                 <TextBlock x:Name="name" Text="{Binding ElementName=Items, Path=SelectedItem.Name, Mode=OneWay, StringFormat= Name : {0} }"></TextBlock>
                                 <TextBlock x:Name="path" Text="{Binding ElementName=Items, Path=SelectedItem.Path, Mode=OneWay, StringFormat= Path : {0} }"></TextBlock>
