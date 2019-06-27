@@ -21,9 +21,11 @@ namespace VideoManagement.UI.WPF.Views.PlayMediaView
     /// </summary>
     public partial class PlayMediaView : UserControl
     {
-        public static readonly DependencyProperty MediaPathProperty =
-         DependencyProperty.Register("MediaPath", typeof(string), typeof(PlayMediaView), new
-            PropertyMetadata("", new PropertyChangedCallback(OnMediaPathChanged)));
+        public static readonly DependencyProperty MediaPathProperty = DependencyProperty.Register(
+            "MediaPath", 
+            typeof(string), 
+            typeof(PlayMediaView), 
+            new PropertyMetadata("", new PropertyChangedCallback(OnMediaPathChanged)));
 
         public string MediaPath
         {
@@ -31,8 +33,7 @@ namespace VideoManagement.UI.WPF.Views.PlayMediaView
             set { SetValue(MediaPathProperty, value); }
         }
 
-        private static void OnMediaPathChanged(DependencyObject d,
-           DependencyPropertyChangedEventArgs e)
+        private static void OnMediaPathChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = d as PlayMediaView;
             view.OnMediaPathChanged(e);
