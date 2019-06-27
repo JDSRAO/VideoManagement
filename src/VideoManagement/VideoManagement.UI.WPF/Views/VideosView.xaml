@@ -26,8 +26,8 @@
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".9*"/>
-                    <ColumnDefinition Width=".1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <!--<ColumnDefinition Width=".1*"/>-->
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Row="0" Grid.Column="0">
@@ -64,14 +64,14 @@
                     </GroupBox>
                 </Grid>
 
-                <Grid Grid.Row="0" Grid.Column="1">
-                    <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="Auto">
+                <!--<Grid Grid.Row="0" Grid.Column="1">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Width="Auto">
                         <TextBox x:Name="searchText" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap"  Text="Search..." VerticalAlignment="Center" Width="130"/>
                         <Button x:Name="searchButton"  ToolTip="Search files" Command="{Binding GetVideosCommand}" Style="{DynamicResource IconButtonStyle}">
                             <Image Source="{StaticResource searchIcon}"/>
                         </Button>
-                    </StackPanel>-->
-                </Grid>
+                    </StackPanel>
+                </Grid>-->
             </Grid>
             
         </Grid>
